@@ -1,0 +1,1 @@
+**_Powerful Enemies_**_:_ The enemies that you encounter if you roll a “1” on any given enemy table. To determine a random powerful enemy during a hexcrawl, roll on the Biome table. To determine a random powerful enemy during a dungeoncrawl, roll on the dungeon themes table.
