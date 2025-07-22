@@ -1,0 +1,13 @@
+Roll (1d12),Clothing/Accessory,Value,Uses
+1,Gloves,10g,Don’t leave fingerprints
+2,Shirt,12g,You may appear upper class
+3,Pants,12g,You may appear upper class (if also wearing a shirt)
+4,Shoes,15g,Can run a bit faster
+5,Coat,15g,Keeps other clothing clean
+6,Mask,15g,Hides identity
+7,Boots,20g,-1d4 Damage appropriate hazards
+8,Cloak/Cape,20g,Hides identity, keeps other clothing clean
+9,Earring/Small Jewelry,50g,If sold with another earring, worth 150g total
+10,Trinket,50g,At vendor, roll d20: value is 200g on a 20.
+11,Ring,75g,Can be traded for a level (rather than 100g)
+12,Amulet,100g,-10% cost at all vendors, but appear _Greedy_ 

@@ -71,7 +71,8 @@ _Note: The style of the clothing or accessory should be flavored randomly when r
 | 10 | Heavy Crossbow | 1d8 | Ranged |
 | 11 | Warhammer | 1d10 | 2h |
 | 12 | Great-axe | 1d10 | 2h, Cleave |
-_Note: Clerics and Wizards only roll 1d8 to determine weapon (and cannot wield found weapons above 1d6 damage), and rogues can only use one-handed melee weapons. Rogues also gain the ability to [[Combat and Enemy Rules|duel wield]] one-handed weapons after level 3._ All weapons worth 15g at base value.
+_Note: Clerics, Rogues and Wizards only roll 1d8 to determine weapon (and cannot at any point wield found weapons above 1d6 damage). Rogues can only use one-handed melee weapons. Rogues also gain the ability to duel wield one-handed weapons after level 3.
+_ All weapons worth 15g at base value.
 
 #### **Armor:**
 

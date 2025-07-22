@@ -1,0 +1,13 @@
+Roll (1d12),Weapon,Damage Die,Additional Traits
+1,Sling,1d4,1h; Ranged
+2,Club,1d4,1h; Clerics +1 damage
+3,Dagger,1d4,1h; Throwable; Sneaky
+4,Sword,1d6,1h
+5,Hatchet,1d6,1h; Throwable
+6,Bow,1d6,2h; Ranged
+7,Staff,1d6,2h; +1 Spell Rolls
+8,Morningstar,1d6,1h; Clerics +1 damage
+9,Great-sword,1d8,2h; Cleave
+10,Heavy Crossbow,1d8,Ranged
+11,Warhammer,1d10,2h
+12,Great-axe,1d10,2h; Cleave 

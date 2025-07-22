@@ -1,0 +1,21 @@
+Roll (1d20),Tool,Value,Uses
+1,Torch,5g,Provides one hour of light
+2,Rations,5g,1 night of food
+3,Oil Flask,1g,Create a slick surface or fuel a lantern.
+4,10’ pole,5g,Poke at traps, etc.
+5,Shackles/Chains,5g,Helps to restrain enemies, bind things together, etc.
+6,Climbing Gear,15g,Aids in climbing, helping falling teammates
+7,Lockpick,20g,Pick locks
+8,Crowbar,20g,Pry open doors, chests, etc.
+9,Net,10g,Restrain enemies, catch fish, etc.
+10,Antitoxin,15g,Cures poison, disease,  and similar conditions.
+11,Healing Potion,50g,1d4+1 healing.
+12,Sharpening Kit,50g,+1 damage to one weapon/day
+13,Forgery Kit,75g,Forge one document/day
+14,Disguise Kit,75g,Disguise one party member/day
+15,Compass,100g,Never get lost
+16,Lantern,50g,Includes 1 hour of _oil_, can be refilled.
+17,Smokebomb,50g,Create a cloud of smoke to escape, confuse, etc.
+18,Poison,50g,Poison an enemy, coat a blade, etc.
+19,Greater Healing Potion,100g,1d6+2 healing.
+20,Holy Water,100g,Kill undead in large amounts, _or_ cure any status condition (1 use) 

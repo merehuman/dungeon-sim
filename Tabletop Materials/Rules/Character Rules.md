@@ -1,16 +1,16 @@
 #### **Character Creation Procedure:**
 1. Roll stats (3d6 x 3) (Strength, Dexterity, Wisdom)
 2. Roll race
-3. Roll HP
-4. Roll class
+3. Roll class
+4. Roll HP
 5. Roll personality trait
 6. Roll attacks or spells based on class
 7. Randomly choose +2 extra torches or +2 extra rations (all characters also start with 1 of each)
-8. Roll on the corresponding tables for 1 item/tool, 1 piece of clothing, 1 weapon, and 1 armor. Clerics and Wizards only roll 1d8 to determine weapon (and cannot wield found weapons above 1d6 damage), and rogues can only use one-handed melee weapons.
-9. Calculate total armor given above outcomes
+8. Roll on the corresponding tables for 1 item/tool, 1 piece of clothing, 1 weapon, and 1 armor. If you rolled a Cleric or Wizard as your class, only roll 1d8 to determine weapon (and cannot wield found weapons above 1d6 damage); if you rolled a rogue you can only use one-handed melee weapons. All items and weapons should be listed together under "Items/Equipment".
+9. Calculate total armor value given the above outcomes.
 10. Roll 3d6 to determine starting amount of Gold
 11. Update stats based on outcomes above.
-12. Roll to name the character, rolling 3d20 for first part, second part, and modifier
+12. Roll to name the character, rolling 3d20 for first part, second part, and modifier. Apply the modifier to the name.
 
 #### Rules:
 
