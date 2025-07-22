@@ -1,0 +1,21 @@
+Roll (1d20),First Part,Second Part,Modifier
+1,Gar,Binzo,None
+2,Nar,Fanda,None
+3,Can,Barl,None
+4,Gin,Ton,None
+5,Bil,Biz,Invert Part Order
+6,Ban,Cart,Invert Part Order
+7,Gish,Kirb,Add Prefix (reroll, use first 2 letters of first part column)
+8,Far,Banson,Add Prefix (reroll, use first 2 letters of second part column)
+9,Nis,Quiz,Cut last Letter of first part
+10,Pan,Let,Cut last letter of second part
+11,Glee,Yuk,Cut first letter of first part
+12,Far,Peel,Cut first letter of second part
+13,Kor,Scar,Repeat First Part
+14,Plee,Tyte,Repeat Second Part
+15,Tan,Gish,First + Second + First
+16,Rit,Scan,Second + First + Second
+17,Dils,Port,First Part Only
+18,Flit,Zip,First Part Only
+19,Skree,Wirl,Second Part Only
+20,Jan,Jun,Second Part Only 

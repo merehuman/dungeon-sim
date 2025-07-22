@@ -1,0 +1,6 @@
+Roll (1d12),Target,Value,Other Effects
+1-2,Self,1d4,None
+3-6,1 Party Member,1d6,+ Self heal 1
+6-9,2 Party Members,1d4 + caster level,+ Self heal 2
+10-11,All Party Members,1d6 + caster level,Cure 1 negative status condition
+12,All Party Members + Self,Full,Cure all negative status conditions 

@@ -1,0 +1,13 @@
+Die Roll (3d12),Type of Attack,Target,Damage
+1,Sweep,Body,1d4
+2,Smack,Body,1d6
+3,Swipe,Head,1d8
+4,Cut,Head,1d10
+5,Slam,Arms,1d12
+6,Grab,Arms,2d4
+7,Swing,Legs,2d6
+8,Pull,Legs,2d8
+9,Push,Mind,2d10
+10,Crush,Self,2d12
+11,Throw,Multiple Enemies,1d20
+12,Roll Twice,Roll Twice,Roll Twice 

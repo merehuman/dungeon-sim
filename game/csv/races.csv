@@ -1,0 +1,9 @@
+Roll (1d20),Race,Effects,Hit Dice
+1-3,Human,+1 stat of choice,1d6
+4-6,Dwarf,+1hp/level, immune to poison,1d8
+7-9,Elf,+1 wis, can’t get tired,1d6
+10-12,Halfling,+1 dex, lucky (1 reroll/day),1d4
+13-15,Fey,+1 wis, +1 random spell,1d4
+16-18,Giant,+1 all damage rolls,1d10
+19,Elemental,Reroll, modifies above, see elemental rules,N/A
+20,Undead,Reroll, modifies above, see undead rules,N/A 

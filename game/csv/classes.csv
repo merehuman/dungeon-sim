@@ -1,0 +1,5 @@
+sRoll (1d4),Class,Effects
+1,Fighter,+1 Str, +1hp, Martial Attack, + 1 armor at start of game
+2,Rogue,+1 Dex, Advantage Trap Disarm
+3,Wizard,+1 Wis, 2 random spells, 2 spell cast at level 1
+4,Cleric,+1 Wis, 1 random spell, 1 random heal, 1 spell cast at level 1 
