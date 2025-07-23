@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "vSq5QkMWLjF1fUhwbgOCFnefB6c6V0oLjOZO+SPS6XNln71S+ihem3MW7WHo9Byrhl4G/heD563t6cCDgBQUgw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jessa\\OneDrive\\Desktop\\projects\\dungeonSim\\dungeon-sim\\TestConsole\\TestConsole.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jessa\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.26\\microsoft.netcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\jessa\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.26\\microsoft.windowsdesktop.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\jessa\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.26\\microsoft.aspnetcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\jessa\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.26\\microsoft.netcore.app.host.win-x64.6.0.26.nupkg.sha512"
+  ],
+  "logs": []
+}
