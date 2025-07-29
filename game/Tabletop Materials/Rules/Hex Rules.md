@@ -6,8 +6,14 @@
 4. Roll on Weather Table (d8)
 5. Roll on Encounter Table (d20)
 6. Roll for and play out any encounters indicated by previous table
-7. If no dungeon, take Full Rest, make a danger roll, and/or repeat the above the next day.
-8. If there is a dungeon and you want to enter, you may take a short or full rest before entering.
+7. If no dungeon, take Full Rest, make a danger roll, and move to the next hex.
+8. If there is a dungeon you should enter, and you may take a short or full rest before entering.
+
+#### Notes:
+
+- To decide on a direction to travel in, either move into the hex closest to any destinations that the party has (as given by quests) or, if the party doesn't have a quest, roll on the random direction table in the quests table document.
+- If the party enters a dungeon, follow dungeon tables and dungeon rules.
+
 #### Rules:
 
 **Danger Roll:** Players must occasionally make checks to determine if they run into dangerous situations or not. Usually this happens at _night_ during _full rests_. To make a danger check, roll 1d20. On a 2-19, nothing happens. On a 20, the characters happen upon a random _magical item_, on a 1 they are attacked by enemies (roll on the enemy table).
