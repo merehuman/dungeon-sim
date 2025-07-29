@@ -1,6 +1,6 @@
-# Dungeon Simulator - Character Creation System
+# dungeon-sim - Console Application
 
-This Unity project implements a comprehensive **data-driven, object-oriented** character creation system for a tabletop roleplaying game simulation. Each character is a self-contained object that carries its own stats, equipment, and abilities. The system loads all character creation tables from CSV files, making it easy to modify game data without touching the code.
+A **pure .NET console application** that simulates a tabletop roleplaying game with comprehensive character creation. Each character is a self-contained object that carries its own stats, equipment, and abilities. The system loads all character creation tables from CSV files, making it easy to modify game data without touching the code.
 
 ## Features
 
@@ -13,7 +13,6 @@ This Unity project implements a comprehensive **data-driven, object-oriented** c
 ### Data-Driven Design
 - **CSV-Based Tables**: All character creation data is loaded from CSV files
 - **No Code Changes**: Modify races, classes, equipment, spells, etc. by editing CSV files
-- **Hot Reloading**: Reload CSV data during development without restarting
 - **Flexible Structure**: Easy to add new tables, modify existing ones, or change game balance
 
 ### Complete Character Creation Process
@@ -52,316 +51,245 @@ The system follows the exact character creation procedure from the rules:
 
 ```
 dungeon-sim/
-├── Assets/
-│   └── Scripts/
-│       ├── Character/
-│       │   ├── Character.cs              # Main character class
-│       │   ├── CharacterEnums.cs         # Enums for race, class, personality
-│       │   └── Equipment.cs              # Equipment classes (Weapon, Armor, Item, etc.)
-│       ├── Systems/
-│       │   ├── DiceSystem.cs             # Dice rolling utilities
-│       │   ├── CSVDataLoader.cs          # Loads and parses CSV files
-│       │   ├── DataDrivenTableData.cs    # Data-driven table access system
-│       │   └── CharacterCreationSystem.cs # Main character creation logic
-│       ├── Setup/
-│       │   └── GameSetup.cs              # Automatic game setup and configuration
-│       ├── Test/
-│       │   └── CharacterCreationTest.cs  # Test script for character creation
-│       └── UI/
-│           └── TerminalInterface.cs      # Terminal-style user interface
-├── game/
-│   ├── csv/                              # CSV data files (14 files)
-│   │   ├── races.csv                      # Race definitions and effects
-│   │   ├── classes.csv                    # Class definitions and effects
-│   │   ├── personality_traits.csv         # Personality traits and bonuses
-│   │   ├── weapons.csv                    # Weapon table with damage and traits
-│   │   ├── armor.csv                      # Armor table with protection values
-│   │   ├── items_tools.csv                # Items and tools with uses
-│   │   ├── clothing_accessory.csv         # Clothing and accessories
-│   │   ├── name_generator.csv             # Name generation parts and modifiers
-│   │   ├── spell_elements.csv             # Spell element types
-│   │   ├── spell_forms.csv                # Spell form types
-│   │   ├── spell_effects.csv              # Spell effect types
-│   │   ├── spell_formula.csv              # Spell formula patterns
-│   │   ├── heal_spells.csv                # Healing spell definitions
-│   │   └── special_attack_generator.csv   # Martial attack definitions
-│   ├── Tabletop Materials/                # Original game design documents
-│   │   ├── Design Doc.md
-│   │   ├── Notes.md
-│   │   ├── Rules/                         # Game rules and mechanics
-│   │   └── Tables/                        # Original table definitions
-│   └── project instructions.md            # Original project requirements
-├── TestConsole/                           # Standalone console test application
-│   ├── Program.cs                         # Main console application
-│   ├── CharacterSystem.cs                 # Character classes (standalone version)
-│   ├── GameSystems.cs                     # Game systems (standalone version)
-│   ├── TestConsole.csproj                 # .NET project file
-│   ├── run_test.bat                       # Windows batch file for easy execution
-│   └── README.md                          # Console test documentation
-└── README.md                              # This documentation
+├── Program.cs                              # Main console application entry point
+├── CharacterSystem.cs                      # Character classes and equipment
+├── GameSystems.cs                          # Game systems (dice, data loading, creation)
+├── DungeonSim.csproj                       # .NET project file
+├── run.bat                                 # Windows batch file for easy execution
+├── clean.bat                               # Cleanup script for build artifacts
+├── README.md                               # This documentation
+└── game/
+    ├── csv/                                # CSV data files (14 files)
+    │   ├── races.csv                       # Race definitions and effects
+    │   ├── classes.csv                     # Class definitions and effects
+    │   ├── personality_traits.csv          # Personality traits and bonuses
+    │   ├── weapons.csv                     # Weapon table with damage and traits
+    │   ├── armor.csv                       # Armor table with protection values
+    │   ├── items_tools.csv                 # Items and tools with uses
+    │   ├── clothing_accessory.csv          # Clothing and accessories
+    │   ├── name_generator.csv              # Name generation parts and modifiers
+    │   ├── spell_elements.csv              # Spell element types
+    │   ├── spell_forms.csv                 # Spell form types
+    │   ├── spell_effects.csv               # Spell effect types
+    │   ├── spell_formula.csv               # Spell formula patterns
+    │   ├── heal_spells.csv                 # Healing spell definitions
+    │   └── special_attack_generator.csv    # Martial attack definitions
+    ├── Tabletop Materials/                  # Original game design documents
+    │   ├── Design Doc.md
+    │   ├── Notes.md
+    │   ├── Rules/                          # Game rules and mechanics
+    │   └── Tables/                         # Original table definitions
+    └── project instructions.md             # Original project requirements
+```
+
+## Requirements
+
+- **.NET 6.0** or later
+- **Windows, macOS, or Linux** (cross-platform)
+
+## Quick Start
+
+### Windows
+1. **Run the application**: Double-click `run.bat` or run `dotnet run` in the terminal
+2. **Clean build artifacts**: Run `clean.bat` to remove temporary files
+
+### Command Line
+```bash
+# Build and run
+dotnet run
+
+# Build only
+dotnet build
+
+# Clean build artifacts
+dotnet clean
 ```
 
 ## Usage
 
-### Basic Character Creation
+When you run the application, it will:
+1. Load all CSV data files
+2. Create a character using the 12-step process
+3. Display the character sheet
+4. Show the creation log with all dice rolls and decisions
+5. Wait for you to press Enter to create another character
 
-```csharp
-// Get the character creation system
-CharacterCreationSystem creationSystem = FindObjectOfType<CharacterCreationCreationSystem>();
-
-// Create a new character
-Character newCharacter = creationSystem.CreateCharacter();
-
-// Access character properties
-Debug.Log($"Name: {newCharacter.characterName}");
-Debug.Log($"Race: {newCharacter.race}");
-Debug.Log($"Class: {newCharacter.characterClass}");
-Debug.Log($"Stats: STR {newCharacter.strength}, DEX {newCharacter.dexterity}, WIS {newCharacter.wisdom}");
-
-// Print character sheet
-Debug.Log(newCharacter.GetCharacterSheet());
+### Example Output
 ```
+=== DUNGEON SIMULATOR - CHARACTER CREATION TEST ===
+Testing the data-driven character creation system...
 
-### Creating Multiple Characters
+Loaded races.csv with 8 rows
+Loaded classes.csv with 4 rows
+Loaded personality_traits.csv with 12 rows
+Loaded weapons.csv with 12 rows
+Loaded armor.csv with 12 rows
+Loaded items_tools.csv with 20 rows
+Loaded clothing_accessory.csv with 12 rows
+Loaded name_generator.csv with 20 rows
+Loaded spell_elements.csv with 12 rows
+=== CREATING NEW CHARACTER ===
 
-```csharp
-List<Character> party = new List<Character>();
-
-for (int i = 0; i < 4; i++)
-{
-    Character character = creationSystem.CreateCharacter();
-    party.Add(character);
-}
-
-// Access any character
-Character fighter = party[0];
-Character wizard = party[1];
-```
-
-### Using the Terminal Interface
-
-1. **Setup**: Add the `TerminalInterface` component to a GameObject in your scene
-2. **UI Setup**: Connect the UI elements (Text for output, InputField for commands)
-3. **Commands**:
-   - `start` or `create` - Create a new character
-   - `list` or `characters` - Show all created characters
-   - `sheet` - Display character sheet(s)
-   - `help` - Show available commands
-   - `clear` - Clear terminal output
-   - `quit` or `exit` - Exit the application
-
-### Testing Without Unity
-
-You can test the character creation system without Unity using the standalone console application:
-
-```bash
-cd TestConsole
-dotnet run
-```
-
-Or use the provided batch file on Windows:
-```bash
-TestConsole/run_test.bat
-```
-
-This will:
-- Load all CSV data files
-- Create characters using the same data-driven system
-- Display complete character sheets
-- Show detailed creation logs with all dice rolls
-- Allow you to create multiple characters interactively
-
-**Benefits:**
-✅ **No Unity Required** - Test the system without Unity installation  
-✅ **Fast Testing** - Quick iteration and testing of character creation  
-✅ **Data Validation** - Verify CSV files are loaded correctly  
-✅ **Debugging** - See exactly what's happening during character creation  
-✅ **Portable** - Can run on any system with .NET 6.0+  
-
-### Using the Test System
-
-```csharp
-// Add CharacterCreationTest to a GameObject
-CharacterCreationTest test = gameObject.AddComponent<CharacterCreationTest>();
-
-// Create characters programmatically
-test.CreateTestCharacters();
-
-// Get all created characters
-List<Character> characters = test.GetCreatedCharacters();
-
-// Get a specific character
-Character character = test.GetCharacter(0);
-```
-
-## Character Object Properties
-
-### Basic Information
-- `characterName`: Generated character name
-- `race`: Character race (Human, Dwarf, Elf, etc.)
-- `characterClass`: Character class (Fighter, Rogue, Wizard, Cleric)
-- `personalityTrait`: Personality trait with stat bonuses
-
-### Core Stats
-- `strength`: Physical strength (3-18)
-- `dexterity`: Agility and reflexes (3-18)
-- `wisdom`: Mental acuity and perception (3-18)
-
-### Combat Stats
-- `maxHealth`: Maximum hit points
-- `currentHealth`: Current hit points
-- `armorValue`: Total armor protection
-- `level`: Character level (starts at 1)
-- `experience`: Experience points
-
-### Resources
-- `gold`: Starting gold pieces
-- `torches`: Number of torches (starts with 1 + bonus)
-- `rations`: Number of rations (starts with 1 + bonus)
-
-### Equipment
-- `equippedWeapon`: Primary weapon
-- `equippedArmor`: List of worn armor pieces
-- `inventory`: List of carried items
-
-### Abilities
-- `spells`: List of known spells (Wizards/Clerics)
-- `martialAttacks`: Special combat abilities (Fighters)
-- `healSpells`: Healing abilities (Clerics)
-
-### Special Abilities
-- `specialAbilities`: General special abilities
-- `racialAbilities`: Race-specific abilities
-- `classAbilities`: Class-specific abilities
-
-## Extending the System
-
-### Modifying Game Data (No Code Changes!)
-Simply edit the CSV files to modify the game:
-
-**Adding/Modifying Races:**
-- Edit `races.csv` - add new rows or modify existing ones
-- The system automatically loads the new data
-
-**Adding/Modifying Classes:**
-- Edit `classes.csv` - add new classes or change effects
-- No code changes needed
-
-**Adding/Modifying Equipment:**
-- Edit `weapons.csv`, `armor.csv`, `items_tools.csv`, `clothing_accessory.csv`
-- Add new items, change damage values, modify traits
-
-**Adding/Modifying Spells:**
-- Edit `spell_elements.csv`, `spell_forms.csv`, `spell_effects.csv`
-- Add new spell components or modify existing ones
-
-### Adding New CSV Tables
-1. Create a new CSV file in the `game/csv/` folder
-2. Add the filename to the `csvFiles` array in `CSVDataLoader.cs`
-3. Add access methods in `DataDrivenTableData.cs`
-
-### Code Extensions
-If you need to add new functionality:
-
-**Adding New Races:**
-1. Add the race to `CharacterRace` enum
-2. Add racial bonuses in `Character.ApplyRacialBonuses()`
-
-**Adding New Classes:**
-1. Add the class to `CharacterClass` enum
-2. Add class bonuses in `Character.ApplyStatBonuses()`
-3. Add class abilities in `CharacterCreationSystem.RollClassAbilities()`
-
-**Adding New Equipment Types:**
-1. Create new equipment classes in `Equipment.cs`
-2. Add loading methods in `DataDrivenTableData.cs`
-3. Update the character creation system to use them
-
-## Unity Setup
-
-### Quick Setup (Recommended)
-1. **Create a new Unity project** (2022.3 LTS or later recommended)
-2. **Import the scripts** into your Assets/Scripts folder
-3. **Copy CSV files** from `game/csv/` to `Assets/game/csv/` (or create a Resources folder)
-4. **Add GameSetup component** to any GameObject in your scene
-5. **Press Play** - the system will auto-setup everything!
-6. **Type "start"** in the console to create your first character
-
-### Manual Setup
-1. **Create a new Unity project** (2022.3 LTS or later recommended)
-2. **Import the scripts** into your Assets/Scripts folder
-3. **Copy CSV files** from `game/csv/` to `Assets/game/csv/`
-4. **Create a scene** with the following GameObjects:
-   - CSVDataLoader (add the component)
-   - CharacterCreationSystem (add the component)
-   - TerminalInterface (add the component and UI elements)
-   - CharacterCreationTest (optional, for testing)
-5. **Set up UI** (if using terminal interface):
-   - Canvas with Text component for output
-   - InputField for commands
-   - ScrollRect for scrolling
-6. **Connect references** in the inspector
-7. **Press Play** and type "start" to create your first character!
-
-### CSV File Setup
-The system looks for CSV files in the following locations:
-- **Editor**: `Assets/game/csv/` (relative to project root)
-- **Built Game**: `Resources/game/csv/` (for distribution)
-
-To use your existing CSV files:
-1. Copy them to `Assets/game/csv/` folder
-2. Or create a `Resources` folder and place them in `Resources/game/csv/`
-
-## Example Output
-
-```
 === STARTING CHARACTER CREATION ===
 
 --- ROLLING STATS ---
-Rolled 3d6 for Strength: 14
-Rolled 3d6 for Dexterity: 12
-Rolled 3d6 for Wisdom: 16
+Rolled 3d6 for Strength: 13
+Rolled 3d6 for Dexterity: 7
+Rolled 3d6 for Wisdom: 8
 
 --- ROLLING RACE ---
-Rolled 1d20 for Race: 7
-Race determined: Elf
+Rolled 1d20 for Race: 4
+Race determined: Dwarf
 
 --- ROLLING CLASS ---
-Rolled 1d4 for Class: 3
-Class determined: Wizard
+Rolled 1d4 for Class: 2
+Class determined: Fighter
+
+--- ROLLING HIT POINTS ---
+Rolled 1d8 for Hit Points: 7
+Hit Points: 7
+
+--- ROLLING PERSONALITY TRAIT ---
+Rolled 1d12 for Personality Trait: 1
+Personality Trait: Friendly
+
+--- ROLLING CLASS ABILITIES ---
+Rolled 3d12 for Martial Attack: 14
+Martial Attack: Sweep - 1d4 damage to Body
+
+--- ROLLING STARTING RESOURCES ---
+Rolled 1d2 for Extra Resources: 1
+Chose +2 extra torches
+
+--- ROLLING EQUIPMENT ---
+Rolled 1d12 for Weapon: 9
+Weapon: Great-sword (1d8)
+Rolled 1d20 for Item/Tool: 9
+Item: Net - Restrain enemies
+Rolled 1d12 for Clothing/Accessory: 8
+Clothing: Cloak/Cape - Hides identity
+Rolled 1d12 for Armor: 8
+Armor: Shield (+0)
+
+--- ROLLING STARTING GOLD ---
+Rolled 3d6 for Starting Gold: 12
+Starting Gold: 12g
+
+--- GENERATING CHARACTER NAME ---
+Rolled 1d20 for Name First Part: 19
+Rolled 1d20 for Name Second Part: 14
+Rolled 1d20 for Name Modifier: 20
+Character Name: Tyte
+
+=== CHARACTER CREATION COMPLETE ===
 
 === CHARACTER SHEET ===
-Name: GishBinzo
-Race: Elf
-Class: Wizard
+Name: Tyte
+Race: Dwarf
+Class: Fighter
 Level: 1
-Personality: OpenMinded
+Personality: Friendly
 
 === STATS ===
 Strength: 14
-Dexterity: 12
-Wisdom: 18
+Dexterity: 7
+Wisdom: 9
 
 === COMBAT ===
-Health: 6/6
+Health: 9/9
 Armor: 1
 
 === EQUIPMENT ===
-Weapon: Staff (1d6)
-Armor: Bracers (+1)
+Weapon: Great-sword (1d8)
+Armor: Shield (+0)
 
 === INVENTORY ===
-- Lantern (Value: 50g)
-- Cloak/Cape (Value: 20g)
+- Net (Value: 5g)
+- Cloak/Cape (Value: 10g)
 
 === RESOURCES ===
 Gold: 12g
-Torches: 1
-Rations: 3
+Torches: 3
+Rations: 1
 
-=== SPELLS ===
-- Crystal Bolt (2 casts/day)
-- Draining Wall (2 casts/day)
+=== MARTIAL ATTACKS ===
+- Sweep: 1d4 damage to Body
+
+=== RACIAL ABILITIES ===
+- Immune to poison
+
+=== CLASS ABILITIES ===
+- Martial Attack
+- +1 armor at start of game
+
+=== CREATION LOG ===
+[... detailed creation log with all dice rolls and decisions ...]
+
+Press any key to create another character, or 'q' to quit...
 ```
 
-This system provides a solid foundation for a tabletop RPG simulation, with each character being a complete, self-contained object that can be easily extended and modified. 
+## Data-Driven Customization
+
+### Modifying Game Data
+All game data is stored in CSV files in the `game/csv/` folder. You can modify these files without changing any code:
+
+- **`races.csv`**: Add new races, modify stat bonuses, change hit dice
+- **`classes.csv`**: Add new classes, modify abilities, change starting equipment
+- **`weapons.csv`**: Add new weapons, modify damage dice, change special traits
+- **`spell_*.csv`**: Add new spell elements, forms, or effects
+- **`name_generator.csv`**: Add new name parts for character generation
+
+### CSV File Format
+Each CSV file follows a consistent format:
+- **Headers**: Column names (e.g., "Roll", "Name", "Description", "Effect")
+- **Data Rows**: Game data with roll ranges and outcomes
+- **Roll Ranges**: Use "1-5", "6-10", "11-15" format for weighted tables
+
+### Example CSV Structure
+```csv
+Roll,Name,Description,Effect
+1-5,Human,Adaptable and balanced,+1 to all stats
+6-10,Elf,Graceful and magical,+2 Dexterity, +1 Wisdom
+11-15,Dwarf,Sturdy and strong,+2 Strength, +1 Constitution
+```
+
+## Development
+
+### Project Structure
+- **`Program.cs`**: Main application entry point and user interface
+- **`CharacterSystem.cs`**: Character class, enums, and equipment definitions
+- **`GameSystems.cs`**: Dice system, data loading, and character creation logic
+
+### Adding New Features
+1. **New Equipment Types**: Add classes to `CharacterSystem.cs`
+2. **New Dice Rolls**: Add methods to `DiceSystem` in `GameSystems.cs`
+3. **New Tables**: Create CSV files and add loading logic to `CSVDataLoader`
+4. **New Character Properties**: Extend the `Character` class in `CharacterSystem.cs`
+
+### Building and Testing
+```bash
+# Build the project
+dotnet build
+
+# Run with debugging
+dotnet run
+
+# Clean build artifacts
+dotnet clean
+```
+
+## Troubleshooting
+
+### Common Issues
+1. **CSV files not found**: Ensure `game/csv/` folder exists with all CSV files
+2. **Build errors**: Run `dotnet clean` then `dotnet build`
+3. **Runtime errors**: Check that all CSV files have proper headers and data
+
+### Performance
+- The application loads all CSV data at startup
+- Character creation is fast and efficient
+- Memory usage is minimal for typical usage
+
+## License
+
+This project is for educational and personal use. The game mechanics and rules are based on the original tabletop materials in the `game/Tabletop Materials/` folder. 

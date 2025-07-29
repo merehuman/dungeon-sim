@@ -1,14 +1,14 @@
 @echo off
 REM Clean up build artifacts for .NET projects
 
-REM Remove bin and obj from TestConsole
-if exist TestConsole\bin (
-    echo Removing TestConsole\bin ...
-    rmdir /s /q TestConsole\bin
+REM Remove bin and obj from current directory
+if exist bin (
+    echo Removing bin ...
+    rmdir /s /q bin
 )
-if exist TestConsole\obj (
-    echo Removing TestConsole\obj ...
-    rmdir /s /q TestConsole\obj
+if exist obj (
+    echo Removing obj ...
+    rmdir /s /q obj
 )
 
 echo Cleanup complete! 

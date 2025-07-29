@@ -251,7 +251,7 @@ namespace DungeonSimTest
         public int value = 15;
         public List<string> traits = new List<string>();
         
-        public Weapon(string name, string damage, List<string> weaponTraits = null)
+        public Weapon(string name, string damage, List<string>? weaponTraits = null)
         {
             weaponName = name;
             damageDie = damage;
@@ -267,7 +267,7 @@ namespace DungeonSimTest
         public int value;
         public List<string> traits = new List<string>();
         
-        public Armor(string name, int armor, int armorValue, List<string> armorTraits = null)
+        public Armor(string name, int armor, int armorValue, List<string>? armorTraits = null)
         {
             armorName = name;
             armorValue = armor;
@@ -284,7 +284,7 @@ namespace DungeonSimTest
         public string description;
         public List<string> uses = new List<string>();
         
-        public Item(string name, int itemValue, string desc, List<string> itemUses = null)
+        public Item(string name, int itemValue, string desc, List<string>? itemUses = null)
         {
             itemName = name;
             value = itemValue;

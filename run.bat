@@ -1,5 +1,5 @@
 @echo off
-echo Building and running Dungeon Simulator Console Test...
+echo Building and running dungeon-sim...
 echo.
 
 dotnet build
@@ -10,11 +10,11 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 echo.
-echo Build successful! Running test...
+echo Build successful! Running dungeon-sim...
 echo.
 
 dotnet run
 
 echo.
-echo Test completed. Press any key to exit...
+echo Application completed. Press any key to exit...
 pause >nul 

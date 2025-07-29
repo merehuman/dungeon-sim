@@ -71,7 +71,7 @@ namespace DungeonSimTest
 
         public void LoadAllCSVFiles()
         {
-            string csvFolderPath = "../game/csv";
+            string csvFolderPath = "game/csv";
             
             string[] csvFiles = {
                 "races.csv", "classes.csv", "personality_traits.csv", "weapons.csv",
@@ -99,7 +99,7 @@ namespace DungeonSimTest
             }
 
             string csvContent = File.ReadAllText(filePath);
-            CSVTableData tableData = ParseCSV(csvContent, fileName);
+            CSVTableData? tableData = ParseCSV(csvContent, fileName);
             
             if (tableData != null)
             {
@@ -109,7 +109,7 @@ namespace DungeonSimTest
             }
         }
 
-        private CSVTableData ParseCSV(string csvContent, string fileName)
+        private CSVTableData? ParseCSV(string csvContent, string fileName)
         {
             CSVTableData tableData = new CSVTableData();
             tableData.tableName = Path.GetFileNameWithoutExtension(fileName);
@@ -172,7 +172,7 @@ namespace DungeonSimTest
             return values.ToArray();
         }
 
-        public CSVTableData GetTable(string tableName)
+        public CSVTableData? GetTable(string tableName)
         {
             string fileName = $"{tableName}.csv";
             if (tableCache.ContainsKey(fileName))
@@ -182,9 +182,9 @@ namespace DungeonSimTest
             return null;
         }
 
-        public Dictionary<string, string> GetRowByRoll(string tableName, int roll)
+        public Dictionary<string, string>? GetRowByRoll(string tableName, int roll)
         {
-            CSVTableData table = GetTable(tableName);
+            CSVTableData? table = GetTable(tableName);
             if (table == null) return null;
 
             foreach (var row in table.rows)
@@ -192,7 +192,7 @@ namespace DungeonSimTest
                 if (row.ContainsKey("Roll (1d20)") || row.ContainsKey("Roll (1d12)") ||
                     row.ContainsKey("Roll (1d4)") || row.ContainsKey("Roll (1d6)"))
                 {
-                    string rollKey = row.Keys.FirstOrDefault(k => k.StartsWith("Roll"));
+                    string? rollKey = row.Keys.FirstOrDefault(k => k.StartsWith("Roll"));
                     if (rollKey != null && ParseRollRange(row[rollKey], roll))
                     {
                         return row;
@@ -231,7 +231,7 @@ namespace DungeonSimTest
         public List<string> GetColumn(string tableName, string columnName)
         {
             List<string> column = new List<string>();
-            CSVTableData table = GetTable(tableName);
+            CSVTableData? table = GetTable(tableName);
 
             if (table != null)
             {
@@ -249,7 +249,7 @@ namespace DungeonSimTest
         
         public List<Dictionary<string, string>> GetAllRows(string tableName)
         {
-            CSVTableData table = GetTable(tableName);
+            CSVTableData? table = GetTable(tableName);
             if (table != null)
             {
                 return new List<Dictionary<string, string>>(table.rows);

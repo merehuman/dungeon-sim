@@ -125,6 +125,7 @@ namespace DungeonSimTest
         
         public static Weapon GetWeaponFromRoll(int roll)
         {
+            if (csvLoader == null) return new Weapon("Dagger", "1d4", new List<string> { "1h" });
             var row = csvLoader.GetRowByRoll("weapons", roll);
             if (row != null)
             {
@@ -148,6 +149,7 @@ namespace DungeonSimTest
         
         public static Armor GetArmorFromRoll(int roll)
         {
+            if (csvLoader == null) return new Armor("Leather Armor", 1, 15, new List<string>());
             var row = csvLoader.GetRowByRoll("armor", roll);
             if (row != null)
             {
@@ -177,6 +179,7 @@ namespace DungeonSimTest
         
         public static Item GetItemFromRoll(int roll)
         {
+            if (csvLoader == null) return new Item("Torch", 5, "Provides light", new List<string> { "Light source" });
             var row = csvLoader.GetRowByRoll("items_tools", roll);
             if (row != null)
             {
@@ -206,6 +209,7 @@ namespace DungeonSimTest
         
         public static Item GetClothingFromRoll(int roll)
         {
+            if (csvLoader == null) return new Item("Shirt", 12, "Basic clothing", new List<string> { "Appearance" });
             var row = csvLoader.GetRowByRoll("clothing_accessory", roll);
             if (row != null)
             {
@@ -235,6 +239,7 @@ namespace DungeonSimTest
         
         public static HealSpell GetHealSpellFromRoll(int roll)
         {
+            if (csvLoader == null) return new HealSpell("Minor Heal", "1d4", "Self", 1, "None");
             var row = csvLoader.GetRowByRoll("heal_spells", roll);
             if (row != null)
             {
@@ -251,6 +256,7 @@ namespace DungeonSimTest
         
         public static MartialAttack GetMartialAttackFromRoll(int roll)
         {
+            if (csvLoader == null) return new MartialAttack("Sweep", "1d4", "Body", "A sweeping attack to the body");
             var row = csvLoader.GetRowByRoll("special_attack_generator", roll);
             if (row != null)
             {
@@ -266,36 +272,43 @@ namespace DungeonSimTest
         
         public static string[] GetNameFirstParts()
         {
+            if (csvLoader == null) return new string[] { "Gar", "Thorne", "Wirl" };
             return csvLoader.GetColumn("name_generator", "First Part").ToArray();
         }
         
         public static string[] GetNameSecondParts()
         {
+            if (csvLoader == null) return new string[] { "Binzo", "Shadowstep", "Flit" };
             return csvLoader.GetColumn("name_generator", "Second Part").ToArray();
         }
         
         public static string[] GetNameModifiers()
         {
+            if (csvLoader == null) return new string[] { "", "the Brave", "the Wise" };
             return csvLoader.GetColumn("name_generator", "Modifier").ToArray();
         }
         
         public static string[] GetSpellElements()
         {
+            if (csvLoader == null) return new string[] { "Fire", "Ice", "Lightning" };
             return csvLoader.GetColumn("spell_elements", "Element").ToArray();
         }
         
         public static string[] GetSpellForms()
         {
+            if (csvLoader == null) return new string[] { "Bolt", "Wall", "Burst" };
             return csvLoader.GetColumn("spell_forms", "Form").ToArray();
         }
         
         public static string[] GetSpellEffects()
         {
+            if (csvLoader == null) return new string[] { "Damage", "Drain", "Stun" };
             return csvLoader.GetColumn("spell_effects", "Effect").ToArray();
         }
         
         public static string GetSpellFormula(int roll)
         {
+            if (csvLoader == null) return "[Element] [Form]";
             var row = csvLoader.GetRowByRoll("spell_formula", roll);
             if (row != null && row.ContainsKey("Formula"))
             {
@@ -306,6 +319,7 @@ namespace DungeonSimTest
         
         public static string GetRaceHitDice(CharacterRace race)
         {
+            if (csvLoader == null) return "1d6";
             var rows = csvLoader.GetAllRows("races");
             foreach (var row in rows)
             {
