@@ -1,0 +1,5 @@
+Roll,LandmarkType,Effect
+1,FleshHill,The party encounters a hill made of flesh. Lowest wis party member must roll a wis save at disadvantage: on both success and failure, a doppelgänger of the target party member forms from the flesh and either attacks or joins the party, depending on the result of the wis save
+2,SphericalHill,The party finds an inexplicably spherical hill. The party can leave the hill alone, attempt to dig into it, or try to climb it. Nothing happens unless they dig to the core of the hill (takes 1 hour, roll 1 random encounter during this time) where they find a magical item: a misc. treasure worth 500g
+3,ValleyOfNight,The party enters a strange valley, inside of which it is eternally night. Resting here, the party will sleep for two days, increasing any time pressure they are under. If they chose to push through, they will end up tired in the next hex, but no time will have passed
+4,MysteriousTubing,The party encounters a weird pile of tubelike items. The party can chose to take one, which will unfold into a land octopus in 1d6 days, instantly becoming hostile to any creatures it is around at that time 

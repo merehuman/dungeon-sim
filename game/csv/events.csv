@@ -1,0 +1,7 @@
+Roll,EventType,Effect
+1,Lost,The party gets lost, losing a day of travel. Do not move on to the next hex until you have passed a night and rolled another encounter
+2,Illness,A party member falls ill, and cannot participate in combat or make any other checks until they've had a full rest
+3,Scuffle,Two party members have physical confrontation (roll to determine which ones). Both lose 1hp. PC's cannot die from a scuffle
+4,Breakthrough,A party member has a breakthrough, allowing them to swap one personality trait for another
+5,Inspired,The party witnesses something amazing and is inspired; gaining +2 temporary HP each (does not stack with other temporary hp)
+6,Vision,A vision comes to a party member in a dream or during some moment of intensity. Roll on magical loot table; that item will be found in the first room of the next dungeon the party enters 

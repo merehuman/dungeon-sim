@@ -1,0 +1,5 @@
+Roll,LandmarkType,Effect
+1,SunkenCatacomb,An undead, flooded dungeon, located at the edge of a huge lake. After 10 turns exploring the dungeon, it begins to flood more extremely, filling up from the entrance to whatever room the party is in at a rate of 2 rooms per turn. In a fully flooded room, the party takes 1d4 damage from drowning as they move through it
+2,PrecariousBridges,A set of rickety bridges criss-cross a giant bridge. The party is ambushed by 1d4 Fish Freaks, and find one elemental: water weapon if they defeat them rather than run
+3,GuardedBarge,At least 2 party members must pass a conversation related wis test, or everyone is refused entry on the one boat that can take them across the region wide lake. Return to the previous hex on fail, continue as normal if pass
+4,WrithingVillage,A village of squid people (actually tiny 2d6 eldritch creatures). The party as if they are in the capital here and/or level up as usual. Just before leaving, the wisest party member must pass a conversation related wisdom check at disadvantage or fight the squids, who reveal their true forms and attack 

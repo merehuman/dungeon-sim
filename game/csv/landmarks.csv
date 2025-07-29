@@ -1,0 +1,9 @@
+Roll,LandmarkType,Effect
+1,BanditCamp,1d6 Bandits + Treasure + NPC (held captive)
+2,Battlefield,Roll 3x enemy, players encounter them mid combat, roll 1 Magical Loot if characters survive the fight
+3,Chokepoint,Characters encounter a biome appropriate chokepoint (a bridge, a tunnel, etc.) guarded by an enemy. Can pay a toll of d100*10 gold or fight the guardian
+4,Campsite,No danger rolls at night
+5,Inn,No danger rolls at night; new party member can be hired for 100g
+6,Shrine,Pay 100g to heal all party members
+7,DruidsGrove,Heal all party members, free
+8,TeleportationCircle,Teleport from this hex to any other hex up to 3 away 

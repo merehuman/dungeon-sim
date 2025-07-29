@@ -143,100 +143,100 @@ namespace DungeonSim
         
         public string GetCharacterSheet()
         {
-            string sheet = $"=== CHARACTER SHEET ===\n";
-            sheet += $"Name: {characterName}\n";
-            sheet += $"Race: {race}\n";
-            sheet += $"Class: {characterClass}\n";
-            sheet += $"Level: {level}\n";
-            sheet += $"Personality: {personalityTrait}\n\n";
+            string sheet = $"=== CHARACTER SHEET ==={Environment.NewLine}";
+            sheet += $"Name: {characterName}{Environment.NewLine}";
+            sheet += $"Race: {race}{Environment.NewLine}";
+            sheet += $"Class: {characterClass}{Environment.NewLine}";
+            sheet += $"Level: {level}{Environment.NewLine}";
+            sheet += $"Personality: {personalityTrait}{Environment.NewLine}{Environment.NewLine}";
             
-            sheet += $"=== STATS ===\n";
-            sheet += $"Strength: {strength}\n";
-            sheet += $"Dexterity: {dexterity}\n";
-            sheet += $"Wisdom: {wisdom}\n\n";
+            sheet += $"=== STATS ==={Environment.NewLine}";
+            sheet += $"Strength: {strength}{Environment.NewLine}";
+            sheet += $"Dexterity: {dexterity}{Environment.NewLine}";
+            sheet += $"Wisdom: {wisdom}{Environment.NewLine}{Environment.NewLine}";
             
-            sheet += $"=== COMBAT ===\n";
-            sheet += $"Health: {currentHealth}/{maxHealth}\n";
-            sheet += $"Armor: {armorValue}\n\n";
+            sheet += $"=== COMBAT ==={Environment.NewLine}";
+            sheet += $"Health: {currentHealth}/{maxHealth}{Environment.NewLine}";
+            sheet += $"Armor: {armorValue}{Environment.NewLine}{Environment.NewLine}";
             
-            sheet += $"=== EQUIPMENT ===\n";
+            sheet += $"=== EQUIPMENT ==={Environment.NewLine}";
             if (equippedWeapon != null)
-                sheet += $"Weapon: {equippedWeapon.weaponName} ({equippedWeapon.damageDie})\n";
+                sheet += $"Weapon: {equippedWeapon.weaponName} ({equippedWeapon.damageDie}){Environment.NewLine}";
             
             foreach (var armor in equippedArmor)
             {
-                sheet += $"Armor: {armor.armorName} (+{armor.armorValue})\n";
+                sheet += $"Armor: {armor.armorName} (+{armor.armorValue}){Environment.NewLine}";
             }
             
-            sheet += $"\n=== INVENTORY ===\n";
+            sheet += $"{Environment.NewLine}=== INVENTORY ==={Environment.NewLine}";
             foreach (var item in inventory)
             {
-                sheet += $"- {item.itemName} (Value: {item.value}g)\n";
+                sheet += $"- {item.itemName} (Value: {item.value}g){Environment.NewLine}";
             }
             
-            sheet += $"\n=== RESOURCES ===\n";
-            sheet += $"Gold: {gold}g\n";
-            sheet += $"Torches: {torches}\n";
-            sheet += $"Rations: {rations}\n\n";
+            sheet += $"{Environment.NewLine}=== RESOURCES ==={Environment.NewLine}";
+            sheet += $"Gold: {gold}g{Environment.NewLine}";
+            sheet += $"Torches: {torches}{Environment.NewLine}";
+            sheet += $"Rations: {rations}{Environment.NewLine}{Environment.NewLine}";
             
             if (spells.Count > 0)
             {
-                sheet += $"=== SPELLS ===\n";
+                sheet += $"=== SPELLS ==={Environment.NewLine}";
                 foreach (var spell in spells)
                 {
-                    sheet += $"- {spell.spellName} ({spell.castsPerDay} casts/day)\n";
+                    sheet += $"- {spell.spellName} ({spell.castsPerDay} casts/day){Environment.NewLine}";
                 }
-                sheet += "\n";
+                sheet += Environment.NewLine;
             }
             
             if (martialAttacks.Count > 0)
             {
-                sheet += $"=== MARTIAL ATTACKS ===\n";
+                sheet += $"=== MARTIAL ATTACKS ==={Environment.NewLine}";
                 foreach (var attack in martialAttacks)
                 {
-                    sheet += $"- {attack.attackName}: {attack.damageDie} damage to {attack.target}\n";
+                    sheet += $"- {attack.attackName}: {attack.damageDie} damage to {attack.target}{Environment.NewLine}";
                 }
-                sheet += "\n";
+                sheet += Environment.NewLine;
             }
             
             if (healSpells.Count > 0)
             {
-                sheet += $"=== HEAL SPELLS ===\n";
+                sheet += $"=== HEAL SPELLS ==={Environment.NewLine}";
                 foreach (var heal in healSpells)
                 {
-                    sheet += $"- {heal.spellName}: {heal.healValue} to {heal.target} ({heal.castsPerDay} casts/day)\n";
+                    sheet += $"- {heal.spellName}: {heal.healValue} to {heal.target} ({heal.castsPerDay} casts/day){Environment.NewLine}";
                 }
-                sheet += "\n";
+                sheet += Environment.NewLine;
             }
             
             if (specialAbilities.Count > 0)
             {
-                sheet += $"=== SPECIAL ABILITIES ===\n";
+                sheet += $"=== SPECIAL ABILITIES ==={Environment.NewLine}";
                 foreach (var ability in specialAbilities)
                 {
-                    sheet += $"- {ability}\n";
+                    sheet += $"- {ability}{Environment.NewLine}";
                 }
-                sheet += "\n";
+                sheet += Environment.NewLine;
             }
             
             if (racialAbilities.Count > 0)
             {
-                sheet += $"=== RACIAL ABILITIES ===\n";
+                sheet += $"=== RACIAL ABILITIES ==={Environment.NewLine}";
                 foreach (var ability in racialAbilities)
                 {
-                    sheet += $"- {ability}\n";
+                    sheet += $"- {ability}{Environment.NewLine}";
                 }
-                sheet += "\n";
+                sheet += Environment.NewLine;
             }
             
             if (classAbilities.Count > 0)
             {
-                sheet += $"=== CLASS ABILITIES ===\n";
+                sheet += $"=== CLASS ABILITIES ==={Environment.NewLine}";
                 foreach (var ability in classAbilities)
                 {
-                    sheet += $"- {ability}\n";
+                    sheet += $"- {ability}{Environment.NewLine}";
                 }
-                sheet += "\n";
+                sheet += Environment.NewLine;
             }
             
             return sheet;

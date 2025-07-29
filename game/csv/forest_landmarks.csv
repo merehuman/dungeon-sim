@@ -1,0 +1,5 @@
+Roll,LandmarkType,Effect
+1,CrumblingWell,An entrance to an Amazing Flora, Flooded, Ruin dungeon. To get out of the dungeon, each party member must make a dex check, taking 1d4 damage on a fail (falling once before climbing up)
+2,BloodyShrine,A shrine in the forest, guarded by 1d4 demonic giant falcons. If the party defeats the falcons, they can chose to take 1d4 damage per party member in exchange for gaining one level each (damage occurs after level up)
+3,WhisperingGrove,A grove of trees which whisper a prophecy to the party, who may place a dungeon entrance at a random hex up 1d4 hexes away
+4,InfinitelyTallTree,The party finds an infinitely tall tree. If they succeed in climbing it using dex checks, they find a bird that will carry them to any hex up to 3 spaces away 

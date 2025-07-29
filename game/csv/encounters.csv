@@ -1,0 +1,13 @@
+Roll,EncounterType,Description
+1,TwoCreatures,2x Creature
+2-3,Creature,Creature
+4-7,None,None
+8,NPC,NPC
+9,Event,Event
+10,Landmark,Landmark
+11-12,DungeonEntrance,Dungeon Entrance
+13,Settlement,Settlement
+14-17,BiomeSpecificCreature,Biome Specific Creature
+18,BiomeSpecificLandmark,Biome Specific Landmark
+19,BiomeSpecificNPC,Biome Specific NPC
+20,BiomeSpecificEvent,Biome Specific Event 

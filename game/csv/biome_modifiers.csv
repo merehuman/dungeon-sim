@@ -1,0 +1,14 @@
+Roll,Modifier,Effect
+1,Impassable,Return to previous hex
+2-4,Fertile,+1 rations per night spent in hex
+5-6,Desolate,Reroll NPC and settlement encounter rolls
+7-8,Flooded,Takes two turns to move through, roll again for encounter on second day
+9-10,Dangerous,All encounter rolls include additional lowest level enemy in the biome
+11-12,SafeHaven,Enemy encounters only on 1; 2-5 is a settlement
+13-14,Historical,Automatic Ruin Landmark every time the party enters the hex
+15,Elemental,Roll on Elemental encounter table
+16,FaeTouched,Roll on Fae-Touched encounter table
+17,Demonic,Roll on Demonic encounter table
+18,Everdark,Always night, all enemies undead
+19,Shifting,Reroll on biome table upon re-entry
+20,Chaotic,Roll again on Modifier table; Reroll upon re-entrance 

@@ -788,7 +788,7 @@ namespace DungeonSim
             {
                 Console.WriteLine(message);
             }
-            creationLog.Add(message);
+            creationLog.Add(message + Environment.NewLine);
         }
         
         public List<string> GetCreationLog()

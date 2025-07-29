@@ -1,0 +1,7 @@
+Roll,Weather,Effects
+1-3,ClearSkies,No effect
+4,CloudyFoggy,All perception checks at disadvantage. Any depressed party members make all checks with disadvantage
+5,Hot,Traveling a full day will leave the party tired the next day
+6,Raining,The party cannot encounter npcs. Any fire damage is halved
+7,SevereStorm,Party is too overwhelmed to stop for npcs or landmarks - skip encounter if either is rolled. All attacks made outside are made with disadvantage
+8,ExtremeWeather,Per biome: tornado, avalanche, forest fire, etc. Strong negative effect determined/biome 

@@ -1,0 +1,12 @@
+Roll,BiomeType,Notes
+1-2,SameAsPrevious,N/A
+3-4,Hills,Party cannot get lost (reroll if rolled)
+5-6,Plains,Cannot be Impassible. Party sleeps well in the plains, and awake rested in the morning
+7-8,Mountains,Any Dwarves in the party make all checks with advantage
+9-10,Forest,Any Elves in the party make all checks with advantage
+11-12,Desert,If "clear skies" is rolled on weather table, use effect of "hot" instead
+13-14,Tundra,If "clear skies" is rolled on weather table, use effect of "cloudy/foggy" instead
+15-16,Canyon,If party encounters enemies, the characters are always ambushed
+17-18,Lake,Can spend 20g to skip encounter roll and take a boat across the lake
+19,Volcano,No Encounter roll. Instead, automatic elemental: fire dungeon entrance
+20,Sinkhole,No Encounter roll. Instead, automatic underdark dungeon entrance 

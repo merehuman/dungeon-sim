@@ -1,6 +1,6 @@
-# dungeon-sim - Console Application
+# dungeon-sim - Windows Forms Application
 
-A **pure .NET console application** that simulates a tabletop roleplaying game with comprehensive character creation. Each character is a self-contained object that carries its own stats, equipment, and abilities. The system loads all character creation tables from CSV files, making it easy to modify game data without touching the code.
+A **pure .NET Windows Forms application** that simulates a tabletop roleplaying game with comprehensive character creation, character management, and hex-based exploration. Each character is a self-contained object that carries its own stats, equipment, and abilities. The system loads all game data from CSV files, making it easy to modify game data without touching the code.
 
 ## Features
 
@@ -8,12 +8,31 @@ A **pure .NET console application** that simulates a tabletop roleplaying game w
 - **Character Class**: Each character is an instance of the `Character` class
 - **Persistent Data**: Characters maintain all their stats, equipment, and abilities
 - **Multiple Characters**: Create and store multiple characters simultaneously
-- **Character Sheets**: Generate formatted character sheets for each character
+- **Character Management**: View all characters, compare sheets, and track current character
+- **Character Sheets**: Generate formatted character sheets with proper line breaks
+
+### Character Management System
+- **Character List**: View all created characters with names, races, classes, and levels
+- **Current Character Tracking**: See which character is currently active
+- **All Character Display**: View all character sheets at once for easy comparison
+- **Character Selection**: Browse character list and see current character status
+
+### Hex-Based Exploration System
+- **Hex Map**: Object-oriented hex coordinate system with axial coordinates
+- **Dynamic Generation**: Hexes are generated using data-driven tables
+- **Exploration Log**: Detailed logs of hex exploration with dice rolls and outcomes
+- **Map Display**: View current map with explored and unexplored hexes
 
 ### Data-Driven Design
-- **CSV-Based Tables**: All character creation data is loaded from CSV files
-- **No Code Changes**: Modify races, classes, equipment, spells, etc. by editing CSV files
+- **CSV-Based Tables**: All character creation and hex data is loaded from CSV files
+- **No Code Changes**: Modify races, classes, equipment, spells, biomes, landmarks, etc. by editing CSV files
 - **Flexible Structure**: Easy to add new tables, modify existing ones, or change game balance
+
+### User Interface
+- **Windows Forms**: Clean, modern interface with black background and lime green text
+- **Button-Based Navigation**: Easy-to-use buttons for all major functions
+- **Proper Line Breaks**: All text displays with correct line breaks using `Environment.NewLine`
+- **Thread-Safe Updates**: UI updates are properly handled for multi-threading
 
 ### Complete Character Creation Process
 The system follows the exact character creation procedure from the rules:
@@ -47,19 +66,29 @@ The system follows the exact character creation procedure from the rules:
 - **Heal Spells**: Specialized healing spells with different targets and effects
 - **Martial Attacks**: Special combat abilities for fighters
 
+### Hex Generation System
+- **Biome Types**: 10 different biomes (Hills, Plains, Mountains, Forest, Desert, Tundra, Canyon, Lake, Volcano, Sinkhole)
+- **Biome Modifiers**: 13 modifiers (Fertile, Dangerous, Historical, Elemental, etc.)
+- **Weather System**: 6 weather types with different effects
+- **Encounter Types**: 12 encounter types including creatures, NPCs, landmarks, and events
+- **Landmarks**: General landmarks and biome-specific landmarks
+- **NPCs**: General NPCs and biome-specific NPCs
+
 ## File Structure
 
 ```
 dungeon-sim/
-├── Program.cs                              # Main console application entry point
+├── Program.cs                              # Main Windows Forms application entry point
 ├── CharacterSystem.cs                      # Character classes and equipment
 ├── GameSystems.cs                          # Game systems (dice, data loading, creation)
+├── HexSystem.cs                            # Hex coordinate system and map management
+├── HexGenerationSystem.cs                  # Hex generation using data-driven tables
 ├── DungeonSim.csproj                       # .NET project file
 ├── run.bat                                 # Windows batch file for easy execution
 ├── clean.bat                               # Cleanup script for build artifacts
 ├── README.md                               # This documentation
 └── game/
-    ├── csv/                                # CSV data files (14 files)
+    ├── csv/                                # CSV data files (35+ files)
     │   ├── races.csv                       # Race definitions and effects
     │   ├── classes.csv                     # Class definitions and effects
     │   ├── personality_traits.csv          # Personality traits and bonuses
@@ -73,7 +102,25 @@ dungeon-sim/
     │   ├── spell_effects.csv               # Spell effect types
     │   ├── spell_formula.csv               # Spell formula patterns
     │   ├── heal_spells.csv                 # Healing spell definitions
-    │   └── special_attack_generator.csv    # Martial attack definitions
+    │   ├── special_attack_generator.csv    # Martial attack definitions
+    │   ├── biomes.csv                      # Biome types and effects
+    │   ├── biome_modifiers.csv             # Biome modifiers
+    │   ├── weather.csv                     # Weather conditions
+    │   ├── encounters.csv                  # Encounter types
+    │   ├── landmarks.csv                   # General landmarks
+    │   ├── npcs.csv                        # General NPCs
+    │   ├── events.csv                      # Random events
+    │   ├── hills_landmarks.csv             # Hills-specific landmarks
+    │   ├── plains_landmarks.csv            # Plains-specific landmarks
+    │   ├── mountains_landmarks.csv         # Mountains-specific landmarks
+    │   ├── forest_landmarks.csv            # Forest-specific landmarks
+    │   ├── desert_landmarks.csv            # Desert-specific landmarks
+    │   ├── tundra_landmarks.csv            # Tundra-specific landmarks
+    │   ├── canyon_landmarks.csv            # Canyon-specific landmarks
+    │   ├── lake_landmarks.csv              # Lake-specific landmarks
+    │   ├── hills_npcs.csv                  # Hills-specific NPCs
+    │   ├── plains_npcs.csv                 # Plains-specific NPCs
+    │   └── mountains_npcs.csv              # Mountains-specific NPCs
     ├── Tabletop Materials/                  # Original game design documents
     │   ├── Design Doc.md
     │   ├── Notes.md
@@ -109,10 +156,54 @@ dotnet clean
 
 When you run the application, it will:
 1. Load all CSV data files
-2. Create a character using the 12-step process
-3. Display the character sheet
-4. Show the creation log with all dice rolls and decisions
-5. Wait for you to press Enter to create another character
+2. Display a Windows Forms interface with buttons for different actions
+3. Allow you to create characters, manage character lists, explore hexes, and view maps
+4. Show detailed logs of all dice rolls and decisions
+
+### Available Actions
+- **Create Character**: Generate a new character using the 12-step process
+- **Show All Characters**: Display all created character sheets in sequence
+- **Select Character**: View the character list and current character status
+- **Show Creation Log**: View the detailed creation process with all dice rolls
+- **Explore Hex**: Generate a new hex using data-driven tables
+- **Show Map**: Display the current hex map with exploration status
+- **Clear Output**: Clear the text display area
+
+### Character Management
+The application supports multiple characters with the following features:
+
+#### Character List Display
+```
+==========================================
+         CHARACTER LIST
+==========================================
+
+1. GarBinzo - Human Fighter (Level 1) [CURRENT]
+2. Tyte - Dwarf Fighter (Level 1)
+3. Elara - Elf Wizard (Level 1)
+
+Showing all character sheets:
+
+--- CHARACTER 1 ---
+=== CHARACTER SHEET ===
+Name: GarBinzo
+Race: Human
+Class: Fighter
+Level: 1
+Personality: Friendly
+
+=== STATS ===
+Strength: 14
+Dexterity: 12
+Wisdom: 10
+
+[... full character sheet with proper line breaks ...]
+```
+
+#### Character Selection
+- View numbered list of all created characters
+- See current character indicator
+- Track character status and information
 
 ### Example Output
 ```
@@ -228,6 +319,80 @@ Rations: 1
 Press any key to create another character, or 'q' to quit...
 ```
 
+### Hex Exploration Examples
+
+#### Example 1: Plains Hex
+```
+=== HEX EXPLORATION: (1, 0) ===
+
+Rolling for hex content...
+Biome: Plains
+Modifier: Fertile
+Weather: ClearSkies
+Encounter: Landmark
+
+Landmark Discovered: Campsite
+
+Hex exploration complete!
+```
+
+#### Example 2: Mountain Hex with Dungeon
+```
+=== HEX EXPLORATION: (0, 1) ===
+
+Rolling for hex content...
+Biome: Mountains
+Modifier: Dangerous
+Weather: CloudyFoggy
+Encounter: DungeonEntrance
+
+Dungeon Entrance: Standard
+
+Hex exploration complete!
+```
+
+#### Example 3: Forest Hex with Biome-Specific Content
+```
+=== HEX EXPLORATION: (-1, 0) ===
+
+Rolling for hex content...
+Biome: Forest
+Modifier: SafeHaven
+Weather: Raining
+Encounter: BiomeSpecificLandmark
+
+Landmark Discovered: WhisperingGrove
+
+Hex exploration complete!
+```
+
+### Map Display Example
+```
+=== HEX MAP ===
+
+Distance 0: (0, 0) - EXPLORED [CURRENT] [CAPITAL]
+  Hex (0, 0): Plains (SafeHaven) [CAPITAL]
+
+Distance 1: (1, 0) - EXPLORED
+  Hex (1, 0): Plains (Fertile) - ClearSkies [LANDMARK: Campsite]
+
+Distance 1: (0, 1) - EXPLORED
+  Hex (0, 1): Mountains (Dangerous) - CloudyFoggy [DUNGEON: Standard]
+
+Distance 1: (-1, 0) - EXPLORED
+  Hex (-1, 0): Forest (SafeHaven) - Raining [LANDMARK: WhisperingGrove]
+
+Distance 1: (0, -1) - UNEXPLORED
+
+Distance 1: (1, -1) - UNEXPLORED
+
+Distance 1: (-1, 1) - UNEXPLORED
+
+Total Explored Hexes: 4
+Current Location: (0, 0)
+Capital Location: (0, 0)
+```
+
 ## Data-Driven Customization
 
 ### Modifying Game Data
@@ -238,6 +403,15 @@ All game data is stored in CSV files in the `game/csv/` folder. You can modify t
 - **`weapons.csv`**: Add new weapons, modify damage dice, change special traits
 - **`spell_*.csv`**: Add new spell elements, forms, or effects
 - **`name_generator.csv`**: Add new name parts for character generation
+- **`biomes.csv`**: Add new biomes, modify biome effects
+- **`biome_modifiers.csv`**: Add new modifiers, change modifier effects
+- **`weather.csv`**: Add new weather types, modify weather effects
+- **`encounters.csv`**: Add new encounter types
+- **`landmarks.csv`**: Add new general landmarks
+- **`npcs.csv`**: Add new general NPCs
+- **`events.csv`**: Add new random events
+- **`*_landmarks.csv`**: Add biome-specific landmarks
+- **`*_npcs.csv`**: Add biome-specific NPCs
 
 ### CSV File Format
 Each CSV file follows a consistent format:
@@ -259,6 +433,8 @@ Roll,Name,Description,Effect
 - **`Program.cs`**: Main application entry point and user interface
 - **`CharacterSystem.cs`**: Character class, enums, and equipment definitions
 - **`GameSystems.cs`**: Dice system, data loading, and character creation logic
+- **`HexSystem.cs`**: Hex coordinate system and map management
+- **`HexGenerationSystem.cs`**: Hex generation using data-driven tables
 
 ### Adding New Features
 1. **New Equipment Types**: Add classes to `CharacterSystem.cs`
@@ -292,4 +468,4 @@ dotnet clean
 
 ## License
 
-This project is for educational and personal use. The game mechanics and rules are based on the original tabletop materials in the `game/Tabletop Materials/` folder. 
+This project is for educational and personal use. The game mechanics and rules are based on the original tabletop materials in the `game/Tabletop Materials/` folder.

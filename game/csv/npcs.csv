@@ -1,0 +1,7 @@
+Roll,NPCType,Effect
+1,Thief,A thief approaches the party and steals their second most expensive item. If any character in the party is perceptive, the party catches the thief
+2,WanderingMystic,Will teach any magic user a new spell for 100g (roll on the magic ability table to determine spell)
+3,Explorer,Will sell a treasure map for 50g. The map leads to the nearest dungeon, guaranteeing the party will find a dungeon entrance in the next newly explored hex
+4,TravelingMerchant,A merchant that will buy anything for regular price, and will sell mundane loot. Will also sell a rumor about the region for 10g
+5,SomeoneWhoCouldHelp,Roll a new party member
+6,SomeoneInNeed,Roll on hexcrawl quest table 

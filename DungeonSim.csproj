@@ -6,8 +6,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>DungeonSim</AssemblyName>
-    <RootNamespace>DungeonSim</RootNamespace>
+    <AssemblyName>dungeon-sim</AssemblyName>
+    <RootNamespace>dungeon-sim</RootNamespace>
     <Description>A tabletop roleplaying game simulation.</Description>
   </PropertyGroup>
 
