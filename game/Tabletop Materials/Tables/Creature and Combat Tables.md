@@ -33,7 +33,7 @@
 | 13             | Bandit Leader: Always accompanied by 1d4 *bandits*.                                                                                          | 10  | 1d8    |
 | 14             | *Ogre*                                                                                                                                       | 25  | 1d8    |
 | 15             | *Elemental*: Roll random element to determine damage type and immunities                                                                     | 15  | 1d8    |
-| 16             | *Wizard*: Casts 2 random spells/turn in addition to attack                                                                                   | 15  | 1d4    |
+| 16             | *Wizard*: Casts one random spells/turn in addition to attack                                                                                   | 15  | 1d4    |
 | 17             | *Ettin*: Casts one *random spell* per turn in addition to attack. The creature has two heads, and loses this ability after losing 15 health. | 30  | 1d8    |
 | 18             | Lich: Casts 1 random spell/turn in addition to attack. *Undead*. *Slow*.                                                                     | 30  | 1d8    |
 | 19             | *Beholder*: Does 1 random status effect to 1 party member/turn                                                                               | 50  | 1d10   |
