@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DungeonSimTest
+namespace DungeonSim
 {
     // Enums
     public enum CharacterRace
