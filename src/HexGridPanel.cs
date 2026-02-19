@@ -63,9 +63,9 @@ namespace DungeonSim
             float offsetX = Math.Max(0, (Width - totalW) / 2f) - minPx;
             float offsetY = Math.Max(0, (Height - totalH) / 2f) - minPy;
 
-            using (var pen = new Pen(Color.Lime, 1.5f))
+            using (var pen = new Pen(Color.White, 1.5f))
             using (var fillBrush = new SolidBrush(Color.FromArgb(30, 30, 30)))
-            using (var textBrush = new SolidBrush(Color.Lime))
+            using (var textBrush = new SolidBrush(Color.White))
             using (var font = new Font("Consolas", 7f))
             {
                 foreach (var hex in explored)
