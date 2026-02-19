@@ -1,7 +1,8 @@
 @echo off
+cd /d "%~dp0.."
 REM Clean up build artifacts for .NET projects
 
-REM Remove bin and obj from current directory
+REM Remove bin and obj from project directory
 if exist bin (
     echo Removing bin ...
     rmdir /s /q bin

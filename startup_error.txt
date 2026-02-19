@@ -1,0 +1,8 @@
+InvalidOperationException: SplitterDistance must be between Panel1MinSize and Width - Panel2MinSize.
+
+   at System.Windows.Forms.SplitContainer.set_SplitterDistance(Int32 value)
+   at System.Windows.Forms.SplitContainer.ApplyPanel2MinSize(Int32 value)
+   at System.Windows.Forms.SplitContainer.set_Panel2MinSize(Int32 value)
+   at DungeonSim.GameWindow.InitializeComponent() in C:\Users\jessa\OneDrive\Desktop\projects\dungeonSim\dungeon-sim\src\GameWindow.cs:line 330
+   at DungeonSim.GameWindow..ctor() in C:\Users\jessa\OneDrive\Desktop\projects\dungeonSim\dungeon-sim\src\GameWindow.cs:line 29
+   at DungeonSim.Program.Main() in C:\Users\jessa\OneDrive\Desktop\projects\dungeonSim\dungeon-sim\src\Program.cs:line 16

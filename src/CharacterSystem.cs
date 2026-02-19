@@ -27,40 +27,40 @@ namespace DungeonSim
         public CharacterRace race;
         public CharacterClass characterClass;
         public PersonalityTrait personalityTrait;
-        
+
         public int strength;
         public int dexterity;
         public int wisdom;
-        
+
         public int maxHealth;
         public int currentHealth;
         public int armorValue;
         public int level = 1;
         public int experience = 0;
-        
+
         public int gold;
         public int torches;
         public int rations;
-        
+
         public Weapon? equippedWeapon;
         public List<Armor> equippedArmor = new List<Armor>();
         public List<Item> inventory = new List<Item>();
-        
+
         public List<Spell> spells = new List<Spell>();
         public List<MartialAttack> martialAttacks = new List<MartialAttack>();
         public List<HealSpell> healSpells = new List<HealSpell>();
-        
+
         public List<string> specialAbilities = new List<string>();
         public List<string> racialAbilities = new List<string>();
         public List<string> classAbilities = new List<string>();
-        
+
         public Character()
         {
             torches = 1;
             rations = 1;
             currentHealth = maxHealth;
         }
-        
+
         public void CalculateArmorValue()
         {
             armorValue = 0;
@@ -69,7 +69,7 @@ namespace DungeonSim
                 armorValue += armor.armorValue;
             }
         }
-        
+
         public void ApplyStatBonuses()
         {
             switch (characterClass)
@@ -89,7 +89,7 @@ namespace DungeonSim
                     wisdom += 1;
                     break;
             }
-            
+
             switch (personalityTrait)
             {
                 case PersonalityTrait.Friendly:
@@ -111,11 +111,11 @@ namespace DungeonSim
                     dexterity += 1;
                     break;
             }
-            
+
             ApplyRacialBonuses();
             currentHealth = maxHealth;
         }
-        
+
         private void ApplyRacialBonuses()
         {
             switch (race)
@@ -140,7 +140,7 @@ namespace DungeonSim
                     break;
             }
         }
-        
+
         public string GetCharacterSheet()
         {
             string sheet = $"=== CHARACTER SHEET ==={Environment.NewLine}";
@@ -149,36 +149,36 @@ namespace DungeonSim
             sheet += $"Class: {characterClass}{Environment.NewLine}";
             sheet += $"Level: {level}{Environment.NewLine}";
             sheet += $"Personality: {personalityTrait}{Environment.NewLine}{Environment.NewLine}";
-            
+
             sheet += $"=== STATS ==={Environment.NewLine}";
             sheet += $"Strength: {strength}{Environment.NewLine}";
             sheet += $"Dexterity: {dexterity}{Environment.NewLine}";
             sheet += $"Wisdom: {wisdom}{Environment.NewLine}{Environment.NewLine}";
-            
+
             sheet += $"=== COMBAT ==={Environment.NewLine}";
             sheet += $"Health: {currentHealth}/{maxHealth}{Environment.NewLine}";
             sheet += $"Armor: {armorValue}{Environment.NewLine}{Environment.NewLine}";
-            
+
             sheet += $"=== EQUIPMENT ==={Environment.NewLine}";
             if (equippedWeapon != null)
                 sheet += $"Weapon: {equippedWeapon.weaponName} ({equippedWeapon.damageDie}){Environment.NewLine}";
-            
+
             foreach (var armor in equippedArmor)
             {
                 sheet += $"Armor: {armor.armorName} (+{armor.armorValue}){Environment.NewLine}";
             }
-            
+
             sheet += $"{Environment.NewLine}=== INVENTORY ==={Environment.NewLine}";
             foreach (var item in inventory)
             {
                 sheet += $"- {item.itemName} (Value: {item.value}g){Environment.NewLine}";
             }
-            
+
             sheet += $"{Environment.NewLine}=== RESOURCES ==={Environment.NewLine}";
             sheet += $"Gold: {gold}g{Environment.NewLine}";
             sheet += $"Torches: {torches}{Environment.NewLine}";
             sheet += $"Rations: {rations}{Environment.NewLine}{Environment.NewLine}";
-            
+
             if (spells.Count > 0)
             {
                 sheet += $"=== SPELLS ==={Environment.NewLine}";
@@ -188,7 +188,7 @@ namespace DungeonSim
                 }
                 sheet += Environment.NewLine;
             }
-            
+
             if (martialAttacks.Count > 0)
             {
                 sheet += $"=== MARTIAL ATTACKS ==={Environment.NewLine}";
@@ -198,7 +198,7 @@ namespace DungeonSim
                 }
                 sheet += Environment.NewLine;
             }
-            
+
             if (healSpells.Count > 0)
             {
                 sheet += $"=== HEAL SPELLS ==={Environment.NewLine}";
@@ -208,7 +208,7 @@ namespace DungeonSim
                 }
                 sheet += Environment.NewLine;
             }
-            
+
             if (specialAbilities.Count > 0)
             {
                 sheet += $"=== SPECIAL ABILITIES ==={Environment.NewLine}";
@@ -218,7 +218,7 @@ namespace DungeonSim
                 }
                 sheet += Environment.NewLine;
             }
-            
+
             if (racialAbilities.Count > 0)
             {
                 sheet += $"=== RACIAL ABILITIES ==={Environment.NewLine}";
@@ -228,7 +228,7 @@ namespace DungeonSim
                 }
                 sheet += Environment.NewLine;
             }
-            
+
             if (classAbilities.Count > 0)
             {
                 sheet += $"=== CLASS ABILITIES ==={Environment.NewLine}";
@@ -238,7 +238,7 @@ namespace DungeonSim
                 }
                 sheet += Environment.NewLine;
             }
-            
+
             return sheet;
         }
     }
@@ -250,7 +250,7 @@ namespace DungeonSim
         public string damageDie;
         public int value = 15;
         public List<string> traits = new List<string>();
-        
+
         public Weapon(string name, string damage, List<string>? weaponTraits = null)
         {
             weaponName = name;
@@ -266,7 +266,7 @@ namespace DungeonSim
         public int armorValue;
         public int value;
         public List<string> traits = new List<string>();
-        
+
         public Armor(string name, int armor, int armorValue, List<string>? armorTraits = null)
         {
             armorName = name;
@@ -283,7 +283,7 @@ namespace DungeonSim
         public int value;
         public string description;
         public List<string> uses = new List<string>();
-        
+
         public Item(string name, int itemValue, string desc, List<string>? itemUses = null)
         {
             itemName = name;
@@ -301,7 +301,7 @@ namespace DungeonSim
         public string form;
         public string effect;
         public int castsPerDay;
-        
+
         public Spell(string name, string spellElement, string spellForm, string spellEffect, int casts)
         {
             spellName = name;
@@ -318,7 +318,7 @@ namespace DungeonSim
         public string damageDie;
         public string target;
         public string description;
-        
+
         public MartialAttack(string name, string damage, string attackTarget, string desc)
         {
             attackName = name;
@@ -335,7 +335,7 @@ namespace DungeonSim
         public string target;
         public int castsPerDay;
         public string additionalEffects;
-        
+
         public HealSpell(string name, string heal, string healTarget, int casts, string effects = "")
         {
             spellName = name;
@@ -345,4 +345,4 @@ namespace DungeonSim
             additionalEffects = effects;
         }
     }
-} 
+}

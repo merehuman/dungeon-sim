@@ -1,4 +1,4 @@
-# dungeon-sim - Windows Forms Application
+# dungeon-sim
 
 A **pure .NET Windows Forms application** that simulates a tabletop roleplaying game with comprehensive character creation, character management, and hex-based exploration. Each character is a self-contained object that carries its own stats, equipment, and abilities. The system loads all game data from CSV files, making it easy to modify game data without touching the code.
 
@@ -78,55 +78,62 @@ The system follows the exact character creation procedure from the rules:
 
 ```
 dungeon-sim/
-├── Program.cs                              # Main Windows Forms application entry point
-├── CharacterSystem.cs                      # Character classes and equipment
-├── GameSystems.cs                          # Game systems (dice, data loading, creation)
-├── HexSystem.cs                            # Hex coordinate system and map management
-├── HexGenerationSystem.cs                  # Hex generation using data-driven tables
+├── src/                                    # C# source code
+│   ├── Program.cs                          # Application entry point
+│   ├── GameWindow.cs                      # Main form and UI logic
+│   ├── CSVDataLoader.cs                    # CSV loading and table data
+│   ├── CharacterSystem.cs                  # Character classes and equipment
+│   ├── GameSystems.cs                      # Game systems (dice, data loading, creation)
+│   ├── HexSystem.cs                        # Hex coordinate system and map management
+│   ├── HexGenerationSystem.cs              # Hex generation using data-driven tables
+│   └── HexGridPanel.cs                     # Hex grid visualization
+├── game/
+│   └── csv/                                # CSV data files (35+ files)
+│       ├── races.csv                       # Race definitions and effects
+│       ├── classes.csv                     # Class definitions and effects
+│       ├── personality_traits.csv          # Personality traits and bonuses
+│       ├── weapons.csv                     # Weapon table with damage and traits
+│       ├── armor.csv                       # Armor table with protection values
+│       ├── items_tools.csv                 # Items and tools with uses
+│       ├── clothing_accessory.csv         # Clothing and accessories
+│       ├── name_generator.csv              # Name generation parts and modifiers
+│       ├── spell_elements.csv              # Spell element types
+│       ├── spell_forms.csv                 # Spell form types
+│       ├── spell_effects.csv               # Spell effect types
+│       ├── spell_formula.csv               # Spell formula patterns
+│       ├── heal_spells.csv                 # Healing spell definitions
+│       ├── special_attack_generator.csv    # Martial attack definitions
+│       ├── biomes.csv                      # Biome types and effects
+│       ├── biome_modifiers.csv             # Biome modifiers
+│       ├── weather.csv                     # Weather conditions
+│       ├── encounters.csv                  # Encounter types
+│       ├── landmarks.csv                   # General landmarks
+│       ├── npcs.csv                        # General NPCs
+│       ├── events.csv                      # Random events
+│       ├── hills_landmarks.csv             # Hills-specific landmarks
+│       ├── plains_landmarks.csv            # Plains-specific landmarks
+│       ├── mountains_landmarks.csv         # Mountains-specific landmarks
+│       ├── forest_landmarks.csv            # Forest-specific landmarks
+│       ├── desert_landmarks.csv            # Desert-specific landmarks
+│       ├── tundra_landmarks.csv            # Tundra-specific landmarks
+│       ├── canyon_landmarks.csv            # Canyon-specific landmarks
+│       ├── lake_landmarks.csv              # Lake-specific landmarks
+│       ├── hills_npcs.csv                 # Hills-specific NPCs
+│       ├── plains_npcs.csv                 # Plains-specific NPCs
+│       └── mountains_npcs.csv              # Mountains-specific NPCs
+├── docs/                                   # Documentation
+│   ├── project instructions.md             # Original project requirements
+│   └── Tabletop Materials/                 # Game design documents
+│       ├── Design Doc.md
+│       ├── Notes.md
+│       ├── Rules/                          # Game rules and mechanics
+│       └── Tables/                         # Original table definitions
+├── batch_files/                            # Build and run scripts
+│   ├── demo.bat                            # Clean, build, run
+│   ├── run.bat                             # Build and run
+│   └── clean.bat                           # Clean build artifacts
 ├── DungeonSim.csproj                       # .NET project file
-├── run.bat                                 # Windows batch file for easy execution
-├── clean.bat                               # Cleanup script for build artifacts
-├── README.md                               # This documentation
-└── game/
-    ├── csv/                                # CSV data files (35+ files)
-    │   ├── races.csv                       # Race definitions and effects
-    │   ├── classes.csv                     # Class definitions and effects
-    │   ├── personality_traits.csv          # Personality traits and bonuses
-    │   ├── weapons.csv                     # Weapon table with damage and traits
-    │   ├── armor.csv                       # Armor table with protection values
-    │   ├── items_tools.csv                 # Items and tools with uses
-    │   ├── clothing_accessory.csv          # Clothing and accessories
-    │   ├── name_generator.csv              # Name generation parts and modifiers
-    │   ├── spell_elements.csv              # Spell element types
-    │   ├── spell_forms.csv                 # Spell form types
-    │   ├── spell_effects.csv               # Spell effect types
-    │   ├── spell_formula.csv               # Spell formula patterns
-    │   ├── heal_spells.csv                 # Healing spell definitions
-    │   ├── special_attack_generator.csv    # Martial attack definitions
-    │   ├── biomes.csv                      # Biome types and effects
-    │   ├── biome_modifiers.csv             # Biome modifiers
-    │   ├── weather.csv                     # Weather conditions
-    │   ├── encounters.csv                  # Encounter types
-    │   ├── landmarks.csv                   # General landmarks
-    │   ├── npcs.csv                        # General NPCs
-    │   ├── events.csv                      # Random events
-    │   ├── hills_landmarks.csv             # Hills-specific landmarks
-    │   ├── plains_landmarks.csv            # Plains-specific landmarks
-    │   ├── mountains_landmarks.csv         # Mountains-specific landmarks
-    │   ├── forest_landmarks.csv            # Forest-specific landmarks
-    │   ├── desert_landmarks.csv            # Desert-specific landmarks
-    │   ├── tundra_landmarks.csv            # Tundra-specific landmarks
-    │   ├── canyon_landmarks.csv            # Canyon-specific landmarks
-    │   ├── lake_landmarks.csv              # Lake-specific landmarks
-    │   ├── hills_npcs.csv                  # Hills-specific NPCs
-    │   ├── plains_npcs.csv                 # Plains-specific NPCs
-    │   └── mountains_npcs.csv              # Mountains-specific NPCs
-    ├── Tabletop Materials/                  # Original game design documents
-    │   ├── Design Doc.md
-    │   ├── Notes.md
-    │   ├── Rules/                          # Game rules and mechanics
-    │   └── Tables/                         # Original table definitions
-    └── project instructions.md             # Original project requirements
+└── README.md                               # This documentation
 ```
 
 ## Requirements
@@ -137,8 +144,8 @@ dungeon-sim/
 ## Quick Start
 
 ### Windows
-1. **Run the application**: Double-click `run.bat` or run `dotnet run` in the terminal
-2. **Clean build artifacts**: Run `clean.bat` to remove temporary files
+1. **Run the application**: Double-click `batch_files\run.bat` or `batch_files\demo.bat` (clean + build + run), or run `dotnet run` in the terminal
+2. **Clean build artifacts**: Run `batch_files\clean.bat` to remove temporary files
 
 ### Command Line
 ```bash

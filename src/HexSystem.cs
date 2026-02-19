@@ -121,7 +121,6 @@ namespace DungeonSim
         Shrine,
         DruidsGrove,
         TeleportationCircle,
-        // Biome-specific landmarks
         FleshHill,
         SphericalHill,
         ValleyOfNight,
@@ -166,7 +165,6 @@ namespace DungeonSim
         TravelingMerchant,
         SomeoneWhoCouldHelp,
         SomeoneInNeed,
-        // Biome-specific NPCs
         WanderingHalfling,
         WitchOnHill,
         PolymorphedDruid,
@@ -193,7 +191,6 @@ namespace DungeonSim
         Vision
     }
 
-    // Hex class representing a single hex on the map
     public class Hex
     {
         public HexCoordinate Coordinate { get; set; }
@@ -214,7 +211,7 @@ namespace DungeonSim
         public Hex(HexCoordinate coordinate)
         {
             Coordinate = coordinate;
-            Biome = BiomeType.Plains; // Default biome
+            Biome = BiomeType.Plains;
             Modifier = BiomeModifier.None;
             Weather = WeatherType.ClearSkies;
             Encounter = EncounterType.None;
@@ -233,22 +230,22 @@ namespace DungeonSim
             desc += $"Modifier: {Modifier}{Environment.NewLine}";
             desc += $"Weather: {Weather}{Environment.NewLine}";
             desc += $"Encounter: {Encounter}{Environment.NewLine}";
-            
+
             if (Landmark != LandmarkType.None)
                 desc += $"Landmark: {Landmark}{Environment.NewLine}";
-            
+
             if (NPC != NPCType.None)
                 desc += $"NPC: {NPC}{Environment.NewLine}";
-            
+
             if (Event != EventType.None)
                 desc += $"Event: {Event}{Environment.NewLine}";
-            
+
             if (IsCapital)
                 desc += $"Special: CAPITAL{Environment.NewLine}";
-            
+
             if (HasDungeon)
                 desc += $"Dungeon: {DungeonType}{Environment.NewLine}";
-            
+
             if (Notes.Count > 0)
             {
                 desc += $"Notes:{Environment.NewLine}";
@@ -257,7 +254,7 @@ namespace DungeonSim
                     desc += $"  - {note}{Environment.NewLine}";
                 }
             }
-            
+
             return desc;
         }
 
@@ -288,7 +285,6 @@ namespace DungeonSim
         }
     }
 
-    // Hex map class for managing the entire map
     public class HexMap
     {
         private Dictionary<HexCoordinate, Hex> hexes = new Dictionary<HexCoordinate, Hex>();
@@ -298,11 +294,9 @@ namespace DungeonSim
 
         public HexMap()
         {
-            // Initialize capital at origin
             CapitalLocation = new HexCoordinate(0, 0);
             CurrentPartyLocation = CapitalLocation;
-            
-            // Create capital hex
+
             Hex capitalHex = new Hex(CapitalLocation)
             {
                 IsCapital = true,
@@ -318,8 +312,7 @@ namespace DungeonSim
         {
             if (hexes.ContainsKey(coordinate))
                 return hexes[coordinate];
-            
-            // Create new hex if it doesn't exist
+
             Hex newHex = new Hex(coordinate);
             hexes[coordinate] = newHex;
             return newHex;
@@ -333,16 +326,15 @@ namespace DungeonSim
         public List<HexCoordinate> GetAdjacentHexes(HexCoordinate center)
         {
             List<HexCoordinate> adjacent = new List<HexCoordinate>();
-            
-            // Hex grid directions (axial coordinates)
+
             var directions = new[]
             {
-                new HexCoordinate(1, 0),   // East
-                new HexCoordinate(1, -1),  // Northeast
-                new HexCoordinate(0, -1),  // Northwest
-                new HexCoordinate(-1, 0),  // West
-                new HexCoordinate(-1, 1),  // Southwest
-                new HexCoordinate(0, 1)    // Southeast
+                new HexCoordinate(1, 0),
+                new HexCoordinate(1, -1),
+                new HexCoordinate(0, -1),
+                new HexCoordinate(-1, 0),
+                new HexCoordinate(-1, 1),
+                new HexCoordinate(0, 1)
             };
 
             foreach (var direction in directions)
@@ -364,19 +356,19 @@ namespace DungeonSim
         public List<HexCoordinate> GetHexesInRange(HexCoordinate center, int range)
         {
             List<HexCoordinate> hexesInRange = new List<HexCoordinate>();
-            
+
             for (int q = -range; q <= range; q++)
             {
                 int r1 = Math.Max(-range, -q - range);
                 int r2 = Math.Min(range, -q + range);
-                
+
                 for (int r = r1; r <= r2; r++)
                 {
                     HexCoordinate coord = new HexCoordinate(center.q + q, center.r + r);
                     hexesInRange.Add(coord);
                 }
             }
-            
+
             return hexesInRange;
         }
 
@@ -384,7 +376,7 @@ namespace DungeonSim
         {
             Hex hex = GetHex(coordinate);
             hex.IsExplored = true;
-            
+
             if (!ExploredHexes.Contains(coordinate))
                 ExploredHexes.Add(coordinate);
         }
@@ -398,29 +390,29 @@ namespace DungeonSim
         public string GetMapDescription(int maxDistance = 3)
         {
             string desc = $"=== HEX MAP ==={Environment.NewLine}{Environment.NewLine}";
-            
+
             for (int distance = 0; distance <= maxDistance; distance++)
             {
                 var hexesInRange = GetHexesInRange(CapitalLocation, distance);
-                
+
                 foreach (var coord in hexesInRange)
                 {
                     Hex hex = GetHex(coord);
                     string status = hex.IsExplored ? "EXPLORED" : "UNEXPLORED";
                     string current = (coord == CurrentPartyLocation) ? " [CURRENT]" : "";
                     string capital = (coord == CapitalLocation) ? " [CAPITAL]" : "";
-                    
+
                     desc += $"Distance {distance}: {coord} - {status}{current}{capital}{Environment.NewLine}";
-                    
+
                     if (hex.IsExplored)
                     {
                         desc += $"  {hex.GetDescription()}{Environment.NewLine}";
                     }
-                    
+
                     desc += Environment.NewLine;
                 }
             }
-            
+
             return desc;
         }
 
@@ -434,4 +426,4 @@ namespace DungeonSim
             return ExploredHexes.Count;
         }
     }
-} 
+}
