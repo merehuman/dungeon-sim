@@ -1,108 +1,89 @@
 #### **Dungeon Theme:**
 
-| **Roll (1d20)** | **Dungeon Theme** | **Effect**                                                                                                                                                                                                                                                                                                                                     |     |
-| --------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
-| 1-3             | Realm of Undeath  | All enemies (not just theme-specific enemies) are [[Creature and Combat Tables\|undead]].                                                                                                                                                                                                                                                      |     |
-| 4-6             | Ruin              | Gold per room doubled. Roll on [[Quest Tables\|rival adventurer table]] instead of standard dungeon NPCs.                                                                                                                                                                                                                                      |     |
-| 7-9             | Monster Den       | All characters are _[[Status Conditions\|sickened]]_ by the smell of the den while inside.                                                                                                                                                                                                                                                     |     |
-| 10-11           | Bandit Hideout    | The tenth room in the dungeon is guaranteed to contain a _Bandit Leader_ and 2x loot in addition to any other enemies rolled. All non-humanoid enemies are considered enslaved creatures: they will join the npc in battle if treated with care in a quiet moment.                                                                             |     |
-| 12-13           | Wizard’s Tower    | All traps deal +1d6 magical damage, and any _exceptional, ornate_, or _unique_ items are instead considered _magical_. All rooms are manmade                                                                                                                                                                                                   |     |
-| 14-15           | Underdark         | Dungeon exits lead to any hex up to 3 hexes away. Torches diminish at twice the normal rate.                                                                                                                                                                                                                                                   |     |
-| 16              | Fae-Touched       | All magic loot and enemies are Fae-Touched.                                                                                                                                                                                                                                                                                                    |     |
-| 17              | Demonic           | All magic loot and enemies are Demonic.                                                                                                                                                                                                                                                                                                        |     |
-| 18              | Elemental         | Roll on the random element table. All magic loot and enemies are modified by that element.                                                                                                                                                                                                                                                     |     |
-| 19              | Secret Lair       | Roll on the theme table again to determine a _Powerful Enemy_. The dungeon is one room, and contains that enemy and 2x _magical_ loot.                                                                                                                                                                                                         |     |
-| 20              | The Forecamp      | A 1 room dungeon, guarded by _a keeper_. If they are defeated, the tunnel in the Forecamp can be used to move back to The Capital at will. Only one Forecamp may exist on the hexmap at a time; if a new Forecamp is discovered the previous tunnel collapses. When you defeat the _keeper_, you also receive one Forecamp specific loot item. |     |
-_Note: In addition to all of the effects listed, you roll on the corresponding encounter and enemy tables when appropriate._
+| **Roll (1d20)** | **Dungeon Theme** | **Effect in dungeon**                                                                                                                                                                                                                                                |     |
+| --------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| 1-3             | Realm of Undeath  | All enemies (not just theme-specific enemies) are [[Creature and Combat Tables\|undead]].                                                                                                                                                                            |     |
+| 4-6             | Ruin              | Gold per room doubled, but any time exactly one creature is encountered inside the dungeon, two of that creature appear instead.                                                                                                                                     |     |
+| 7-9             | Monster Den       | All characters are _[[Status Conditions\|poisoned]]_ by the smell of the den while inside.                                                                                                                                                                           |     |
+| 10-11           | Bandit Hideout    | The tenth room in the dungeon is guaranteed to contain a _Bandit Leader_ and 2x loot in addition to any other creatures rolled.                                                                                                                                      |     |
+| 12-13           | Wizard’s Tower    | All traps deal +1d6 magical damage, and any _exceptional, ornate_, or _unique_ items are instead considered _magical_. All rooms are manmade                                                                                                                         |     |
+| 14-15           | Underdark         | Dungeon exits lead to any hex up to 3 hexes away. Torches diminish at twice the normal rate.                                                                                                                                                                         |     |
+| 16              | Fae-Touched       | All magic loot and all creatures are Fae-Touched.                                                                                                                                                                                                                    |     |
+| 17              | Demonic           | All magic loot and all creatures are Demonic.                                                                                                                                                                                                                        |     |
+| 18              | Elemental         | Roll on the random element table. All magic loot and all creatures are modified by that element.                                                                                                                                                                     |     |
+| 19              | Secret Lair       | Roll on the theme table again to determine a _ELITE creature_. The dungeon is one room, and contains that creature, one more randomly generated creature and 2x _magical_ loot.                                                                                      |     |
+| 20              | The Forecamp      | A 1 room dungeon, guarded by _a keeper_. If they are defeated, the tunnel in the Forecamp can be used to move back to The Capital at will. Only one Forecamp may exist on the hexmap at a time; if a new Forecamp is discovered the previous one ceases to function. |     |
+_Note: In addition to all of the effects listed, you roll on the corresponding themed encounter table when appropriate.
 
 #### **Dungeon Modifiers:**
 
-| **Roll (1d20)** | **Modifier** | **Effect** |
-| ---- | ---- | ---- |
-| 1-5 | None | No effect. |
-| 6-8 | Trapped | Every second room explored (starting with Room 2) is _trapped_. |
-| 9-10 | Geologically Fantastic | A crystalline cavern, a castle made of some special dark stone, etc. All enemies are _made of stone_ and all of the loot is at least _Standard_ (on 1-12_,_ but also _Heavy_. |
-| 11-12 | Evil | The place has an overwhelming aura of evil. All healing in this dungeon is reduced by 1/2. |
-| 13 | Ancient | Because the space is so ancient, all loot there is _Flimsy_ on rolls 1-13 but _Unique_ on 15-17. |
-| 14 | Labyrinthine | A system of tubes. _Room Type_ is always coridor, and the first room must have at least 3 exits. Because it is hard to get around these spaces, the loot found there is always at least _Standard_ (on a 1-12). |
-| 15 | Picked-Over | Any loot found cannot be _Exceptional_, _Ornate_, or _Unique_ (reroll), but if you explore fifteen rooms you find one _Magic_ item. |
-| 16 | Flooded | The dungeon is filled with waist-deep water. Moving from one room to another takes _two turns_, electric attacks do double damage, and any non-magical paper loot found is useless and worthless. |
-| 17 | Ultra-Dark | Only party members with _darkvision_ can see properly; torches do nothing to help. |
-| 18 | Seething with Enemies | Anytime an enemy is rolled, 2x that enemy shows up instead. |
-| 19 | Bountiful | Anytime loot is rolled, roll twice and take both. |
-| 20 | Roll Twice | Roll twice on this table and combine the results. |
+| **Roll (1d20)** | **Modifier**           | **Effect**                                                                                                                                                                                                                                                                                                                                  |
+| --------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1-5             | None                   | No effect.                                                                                                                                                                                                                                                                                                                                  |
+| 6-8             | Trapped                | Every second room explored (starting with Room 2) contains a *trap*                                                                                                                                                                                                                                                                         |
+| 9-10            | Geologically Fantastic | A crystalline cavern, a castle made of some special dark stone, etc. All enemies are _made of stone_ and all of the loot is at least _Standard_ but also _Heavy_.                                                                                                                                                                           |
+| 11-12           | Evil                   | The place has an overwhelming aura of evil. All healing in this dungeon is reduced by 1/2.                                                                                                                                                                                                                                                  |
+| 13              | Ancient                | Because the space is so ancient, all loot there is _Flimsy_ on rolls 1-13 but _Unique_ on 15-17.                                                                                                                                                                                                                                            |
+| 14              | Labyrinthine           | A system of tubes. _Room Type_ is always corridor, and the first room must have at least 3 doors. After 3 rooms have been generated, any doors rolled can no longer be *Exits* and any exit rolled becomes a *Blocked* door. Because it is hard to get around these spaces, the loot found there is always at least _Standard_ (on a 1-12). |
+| 15              | Picked-Over            | Any loot found cannot be _Exceptional_, _Ornate_, or _Unique_ (reroll), but if you explore six rooms you find one _Magic_ item.                                                                                                                                                                                                             |
+| 16              | Flooded                | The dungeon is filled with waist-deep water. Moving from one room to another takes _two turns_, electric attacks do double damage, and any non-magical paper loot found is useless and worthless.                                                                                                                                           |
+| 17              | Ultra-Dark             | Only party members with _darkvision_ can see properly; torches do nothing to help.                                                                                                                                                                                                                                                          |
+| 18              | Seething with Enemies  | Anytime one creature is rolled, 2x that creature shows up instead.                                                                                                                                                                                                                                                                          |
+| 19              | Bountiful              | Anytime loot is rolled, roll twice and take both.                                                                                                                                                                                                                                                                                           |
+| 20              | Roll Twice             | Roll twice on this table and apply both sets of effects.                                                                                                                                                                                                                                                                                    |
 
 #### **Room Type:**
 | **Roll (3d6)** | **Type** | Shape       | Origin  |
 | -------------- | -------- | ----------- | ------- |
 | 1-3            | Passage  | Rounded     | Natural |
 | 4-6            | Room     | Rectilinear | Manmade |
+
+#### Effect of Room Type/Shape/Origin
+
+| **Type** | Effect                                               |
+| :------- | :--------------------------------------------------- |
+| Passage  | Do not mark a turn when finished resolving this room |
+| Room     | None                                                 |
+
+| Shape       | Effect |
+| :---------- | :----- |
+| Rounded     |        |
+| Rectilinear |        |
+
+| Origin  |     |
+| :------ | :-- |
+| Natural |     |
+| Manmade |     |
+
 #### **Room Size:**
-| **Roll (1d12)** | **Size** |
-| ---- | ---- |
-| 1 | Tiny |
-| 2-4 | Small |
-| 5-8 | Medium |
-| 9-10 | Large |
-| 10-11 | Huge |
-| 12 | Gargantuan |
-#### **Number of Exits:**
+| **Roll (1d12)** | **Size**   | Effect                                                                                                                                              |
+| --------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1               | Tiny       | Can only be ONE door maximum                                                                                                                        |
+| 2-4             | Small      | Can only be TWO doors maximum                                                                                                                       |
+| 5-8             | Medium     | None                                                                                                                                                |
+| 9-10            | Large      | None                                                                                                                                                |
+| 10-11           | Huge       | If at least ONE door is rolled, ADD ONE EXTRA DOOR                                                                                                  |
+| 12              | Gargantuan | After resolving all other room effects but before moving into the next room, Roll DC 12 wisdom check; if pass, roll and acquire one piece of *loot* |
+#### **Number of Doors:**
 
-| **Roll (1d12)** | **Number of Exits** |
-| ---- | ---- |
-| 1-3 | None |
-| 4-8 | 1 |
-| 9-11 | 2 |
-| 12 | 3 |
-#### **Dungeon Door Choice (which door to go through, or exit):**
+| **Roll (1d12)** | **Number of Doors** |
+| --------------- | ------------------- |
+| 1-2             | None                |
+| 3-8             | 1                   |
+| 9-11            | 2                   |
+| 12              | 3                   |
+#### **Door Types:**
+| **Roll (1d20)** | **Type of Door** | **Effect**                                                                                                                                                                                                    |
+| --------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1-7             | Open             | None                                                                                                                                                                                                          |
+| 8-11            | Locked           | Must be picked to open                                                                                                                                                                                        |
+| 12-13           | Blocked          | DC 12 strength check to unblock, then it is a normal open door                                                                                                                                                |
+| 13-15           | Trapped (Open)   | Treated as a trap (see below) and becomes an open door after the trap is resolved                                                                                                                             |
+| 16              | Trapped (Locked) | Treated as a trap (see below) and becomes an locked door after the trap is resolved                                                                                                                           |
+| 17              | Secret           | DC 12 WIS check to see if the party notices it; if they do it functions as TWO OPEN DOORS. If the party does not notice the door it cannot be used.                                                           |
+| 18              | Trapped (Secret) | DC 12 WIS check to see if the party notices it, if they do resolve a TRAP, and then it functions as TWO OPEN DOORS. If the party does not notice the door do not roll for a trap and the door cannot be used. |
+| 19-20           | Dungeon Exit     | Leads back to Hexploring procedure                                                                                                                                                                            |
 
-When the party is in a room with one or more exits, roll on the table that matches the number of exits. The result is either **Exit** (leave the dungeon) or **Door A**, **Door B**, etc. (go through that door into a new room). Only a roll of **Exit** ends the dungeon crawl from this step.
-
-| **Number of Exits** | **Roll** | **Result** |
-| ---- | ---- | ---- |
-| 1 | 1d4 | 1 = Exit, 2–4 = Door A |
-| 2 | 1d6 | 1 = Exit, 2–3 = Door A, 4–5 = Door B, 6 = Door B |
-| 3 | 1d8 | 1 = Exit, 2–3 = Door A, 4–5 = Door B, 6–7 = Door C, 8 = Door C |
-| 4 | 1d6 | 1 = Exit, 2 = Door A, 3 = Door B, 4 = Door C, 5 = Door D, 6 = Door D |
-| 5+ | 1d(N+1) | 1 = Exit, 2 = Door 1, 3 = Door 2, … , N+1 = Door N |
-
-*For 5 or more exits, use a die with N+1 sides (e.g. 1d6 for 5 exits, 1d12 for 11 exits); 1 = Exit, each other face = one door.*
-
-#### **Backtrack — which unused door (when continuing from a dead end):**
-
-When the party is at a dead end and rolls 5–10 on the Dead End table (continue exploring), use this to choose which previously unused door to go through. Roll 1dK where K = number of available (unused) doors in the room you are backtracking to; each result corresponds to one of those doors.
-
-| **Available unused doors (K)** | **Roll** | **Result** |
-| ---- | ---- | ---- |
-| 1 | — | That door |
-| 2 | 1d2 | 1 = first unused, 2 = second unused |
-| 3 | 1d3 | 1 = first, 2 = second, 3 = third |
-| 4 | 1d4 | 1–4 = first, second, third, fourth |
-| 5+ | 1dK | 1 = first, 2 = second, … , K = K-th |
-
-#### **Dead End (no exits):**
-
-When the party reaches a room with no exits, do **not** leave immediately. Roll 1d10:
-
-| **Roll (1d10)** | **Result** |
-| ---- | ---- |
-| 1–4 | Leave the dungeon (full rest, danger roll, then hexcrawling). |
-| 5–10 | Continue exploring: choose one of the doors the party has not yet used in a previously visited room. Roll on **Backtrack — which unused door** for that room’s available doors, then proceed through that door into a new room (roll new room as usual). |
-
-#### **Exit Types:**
-| **Roll (1d20)** | **Type of Door** |
-| ---- | ---- |
-| 1-5 | Open |
-| 6-9 | Locked |
-| 10-12 | Blocked |
-| 13-14 | Trapped (Open) |
-| 14-15 | Trapped (Locked) |
-| 16 | Stairs Up |
-| 17 | Stairs Down |
-| 18 | Secret |
-| 19 | Dungeon Exit |
-| 20 | Roll Twice |
-_Special Rule_: If you “roll twice” and roll a trapped door, roll again if your other roll is a 1-9.
 #### Room Details:
 
 | **Roll (1d12)** | **Modifier**             | **Effect**                                          |
@@ -114,53 +95,44 @@ _Special Rule_: If you “roll twice” and roll a trapped door, roll again if y
 | 11              | Portal                   | Wis check: can teleport to dungeon entrance         |
 | 12              | Puzzle                   | Wis check: success reveals an *random ornate+ item* |
 
-#### **Universal Dungeon Encounters:**
-| **Roll (1d20)** | **Encounter** |
-| ---- | ---- |
-| 1 | 2 Creatures |
-| 2-3 | 2 Creatures + 1 Loot |
-| 6-9 | 1 Creature + 1 Loot |
-| 10 | NPC |
-| 11 | 1 Trap |
-| 12 | 1 Trap + 1 Loot |
-| 13 | 1 Loot |
-| 14-20 | Theme Specific Encounter |
+#### Dungeon Encounters:
+
+| **Roll (1d20)** | **Encounter**            |
+| --------------- | ------------------------ |
+| 1               | 2 Creatures              |
+| 2               | 2 Creatures + 1 Loot     |
+| 3-4             | 1 Creature + 1 Loot      |
+| 5-7             | 1 Creature               |
+| 8-9             | 1 Trap                   |
+| 10-12           | 1 Trap + 1 Loot          |
+| 13-16           | 1 Loot                   |
+| 17-20           | Theme Specific Encounter |
 #### **Traps:**
-| **Roll (1d20)** | **Trap Type**  | **Difficulty Modifier** | Test stat | **Damage** | **Other Effects**                                                         |
-| --------------- | -------------- | ----------------------- | --------- | ---------- | ------------------------------------------------------------------------- |
-| 1-4             | Poison Darts   | 0                       | Dex       | 1d4        | Target is *poisoned*                                                      |
-| 5-8             | Walls Close In | 0                       | Str       | 1d4        | None                                                                      |
-| 9-11            | Hot Oil        | 0                       | Dex       | 1d6        | If target has a lit torch, +1d4 extra damage                              |
-| 12-13           | Swinging Blade | 1                       | Dex       | 1d6        | None                                                                      |
-| 14-15           | Snake Pit      | 1                       | Dex       | 1d6        | None                                                                      |
-| 16-17           | Magical Glyph  | 1                       | Wis       | 1d8        | None                                                                      |
-| 18              | Cage Trap      | 2                       | Dex       | 1d8        | Victim is trapped in a cage, and party must spend a turn getting them out |
-| 19              | Rolling Ball   | 2                       | Dex       | 1d10       | None                                                                      |
-| 20              | Poison Gas     | 2                       | Wis       | 1d8        | Effects whole party                                                       |
+| **Roll (1d20)** | **Trap Type**  | **DC to AVOID** | Test stat | **Damage** | **Other Effects**                                                         |
+| --------------- | -------------- | --------------- | --------- | ---------- | ------------------------------------------------------------------------- |
+| 1-4             | Poison Darts   | 8               | Dex       | 1d4        | Target is *poisoned*                                                      |
+| 5-8             | Walls Close In | 8               | Str       | 1d4        | None                                                                      |
+| 9-11            | Hot Oil        | 8               | Dex       | 1d6        | If target has a lit torch, +1d4 extra damage                              |
+| 12-13           | Swinging Blade | 10              | Dex       | 1d6        | None                                                                      |
+| 14-15           | Snake Pit      | 10              | Dex       | 1d6        | None                                                                      |
+| 16-17           | Magical Glyph  | 10              | Wis       | 1d8        | None                                                                      |
+| 18              | Cage Trap      | 12              | Dex       | 1d8        | Victim is trapped in a cage, and party must spend a turn getting them out |
+| 19              | Rolling Ball   | 12              | Dex       | 1d10       | None                                                                      |
+| 20              | Poison Gas     | 12              | Wis       | 1d8        | Effects whole party                                                       |
 
 
-#### Dungeon NPCS
-
-| **Roll (1d6)** | **NPC**                | **Effect**                                                                                                                                                                  |
-| -------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1              |                        |                                                                                                                                                                             |
-| 3              |                        |                                                                                                                                                                             |
-| 4              |                        |                                                                                                                                                                             |
-| 2              |                        |                                                                                                                                                                             |
-| 5              |                        |                                                                                                                                                                             |
-| 6              |                        |                                                                                                                                                                             |
 #### **Encounters/Theme:**
 
 ###### _Realm of Undeath:_
 
-| **Roll (1d6)** | **Encounter** | HP | Attack |
-| ---- | ---- | ---- | ---- |
-| 1 | *Flesh Golem*: Revives after 1d6 turns, but will not pursue party. | 20 | 1d10 |
-| 2 | *Undead Mound*: A roiling mass of undead flesh. If it hits a party member for 3+ damage (after damage reduction), they are sucked into the mound, and will die if the mound is not killed in the next turn.  | 15 | 1d6 |
-| 3 | 1d4 *Inside Out Dog*: If all dogs killed, lowest WIL party member save or else *sickened* until rest. | 5 each | 1d4 |
-| 4 | *Cloud of Undeath*: A hazy undead fog passes through the room. Lowest WIS party member save or else turned into an *undead* until the party leaves the dungeon. 1d6 upon entering each new room that the effected party member will attack the party.  | N/A | N/A<br> |
-| 5 | *Necromancer’s Retinue*: 2d6 skeletons walk into the room. They will not attack the party unless provoked. One of the skeletons wears a *Necromantic Amulet*, which the party can either acquire through force or discussion/trickery.  | 2/skeleton<br> | 1d4<br> |
-| 6 | *Fountain of Blood*: The party finds a fountain of blood, which, if they drink from it, heals all party members to full health. Fae party members and party members with personality traits that would make them cautious about doing so will not drink from the fountain. | **N/A<br>** | N/A |
+| **Roll (1d6)** | **Encounter**                                                                                                                                                                                                                                                              | HP             | Attack  |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ------- |
+| 1              | *Flesh Golem*: Revives after 1d6 turns, but will not pursue party.                                                                                                                                                                                                         | 20             | 1d10    |
+| 2              | *Undead Mound*: A roiling mass of undead flesh. If it hits a party member for 3+ damage (after damage reduction), they are sucked into the mound, and will die if the mound is not killed in the next turn.                                                                | 15             | 1d6     |
+| 3              | 1d4 *Inside Out Dog*: If all dogs killed, lowest WIS party member save or else *panicked* until rest.                                                                                                                                                                      | 5 each         | 1d4     |
+| 4              | *Cloud of Undeath*: A hazy undead fog passes through the room. Lowest WIS party member save or else turned into an *undead* until the party leaves the dungeon. 1d6 upon entering each new room that the effected party member will attack the party.                      | N/A            | N/A<br> |
+| 5              | *Necromancer’s Retinue*: 2d6 skeletons walk into the room. They will not attack the party unless provoked. One of the skeletons wears a *Necromantic Amulet*, which the party can either acquire through force or discussion/trickery.                                     | 2/skeleton<br> | 1d4<br> |
+| 6              | *Fountain of Blood*: The party finds a fountain of blood, which, if they drink from it, heals all party members to full health. Fae party members and party members with personality traits that would make them cautious about doing so will not drink from the fountain. | **N/A<br>**    | N/A     |
 ###### _Ruin:_
 
 | **Roll (1d6)** | **Encounter** | HP | Attack |
@@ -173,13 +145,13 @@ _Special Rule_: If you “roll twice” and roll a trapped door, roll again if y
 | 6 | *Ancient Forge*: Choose one weapon and increase its quality level by 1. | N/A<br> | N/A<br> |
 ###### _Monster Den:_
 
-| **Roll (1d6)** | **Encounter** | HP | Attack |
+| **Roll (1d6)** | **Encounter**                                                                                                                                                                                                                                | HP | Attack |
 | ---- | ---- | ---- | ---- |
-| 1 | *Manticore*: *Poisons* target on critical hits. Accompanied by 1d4 baby manticores (5hp, 1d4). | 30 | 1d8 |
-| 2 | *Giant Spider*: *Stuns* target on critical hits. Accompanied by 1d4 baby giant spiders (5hp, 1d4) | 20 | 1d8 |
-| 3 | 1d4 *Troglodytes*: If all killed, gain 1 torch for each creature. | 8 each | 1d6 |
-| 4 | *Dung*: The lowest *DEX* party member steps in dung. All party members are *sickened* until that party member reaches a settlement or leaves the party. | N/A | N/A<br> |
-| 5 | *Mutation*: The monstrous aura of the space causes a random party member to undergo a grotesque transformation (imagine what it is). Invert two of their statistics permanently. | N/A<br> | N/A |
+| 1 | *Manticore*: *Poisons* target on critical hits. Accompanied by 1d4 baby manticores (5hp, 1d4).                                                                                                                                               | 30 | 1d8 |
+| 2 | *Giant Spider*: *Stuns* target on critical hits. Accompanied by 1d4 baby giant spiders (5hp, 1d4)                                                                                                                                            | 20 | 1d8 |
+| 3 | 1d4 *Troglodytes*: If all killed, gain 1 torch for each creature.                                                                                                                                                                            | 8 each | 1d6 |
+| 4 | *Dung*: The lowest *DEX* party member steps in dung. All party members are *diseased* until that party member reaches a settlement or leaves the party.                                                                                      | N/A | N/A<br> |
+| 5 | *Mutation*: The monstrous aura of the space causes a random party member to undergo a grotesque transformation (imagine what it is). Invert two of their statistics permanently.                                                             | N/A<br> | N/A |
 | 6 | *Eggs*: You find an unhatched egg of some unknown beast. In 2d6 days, the egg hatches into a baby (1-3) *manticore* or baby (4-6) *giant spider*. The beast joins your party and become adult versions if they survive for another 2d6 days. | N/A<br> | N/A<br> |
 ###### _Bandit Hideout:_
 
