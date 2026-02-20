@@ -262,14 +262,22 @@ namespace DungeonSim
                 AppendToOutput($"Enter a number (1–{detailHexList.Count}) below to view that hex's full details." + Environment.NewLine + Environment.NewLine);
                 hexGridPanel?.Invalidate();
 
-                if (newHex.ResolvedEncounter is DungeonEncounter dungeonEncounter)
+                // When encounter roll is Dungeon Entrance, ensure we have a ResolvedEncounter and show Enter/Skip
+                if (newHex.Encounter == EncounterType.DungeonEntrance)
                 {
-                    hexAwaitingDungeonChoice = newHex;
-                    dungeonEncounter.PlayerChoseToEnter = null;
-                    AppendToOutput("Enter dungeon or skip? Use [Enter Dungeon] or [Skip Dungeon]." + Environment.NewLine + Environment.NewLine);
-                    btnExploreHex!.Enabled = false;
-                    btnEnterDungeon!.Visible = true;
-                    btnSkipDungeon!.Visible = true;
+                    if (newHex.ResolvedEncounter is not DungeonEncounter)
+                        newHex.ResolvedEncounter = Encounter.CreateFromHex(newHex);
+                    if (newHex.ResolvedEncounter is DungeonEncounter dungeonEncounter)
+                    {
+                        if (dungeonEncounter.ThemeRoll == null)
+                            dungeonEncounter.RollThemeAndModifier();
+                        hexAwaitingDungeonChoice = newHex;
+                        dungeonEncounter.PlayerChoseToEnter = null;
+                        AppendToOutput("Enter dungeon or skip? Type 1 to enter, 2 to skip." + Environment.NewLine + Environment.NewLine);
+                        btnExploreHex!.Enabled = false;
+                        btnEnterDungeon!.Visible = true;
+                        btnSkipDungeon!.Visible = true;
+                    }
                 }
             }
             catch (Exception ex)
@@ -283,7 +291,8 @@ namespace DungeonSim
             if (hexAwaitingDungeonChoice?.ResolvedEncounter is not DungeonEncounter dungeon)
                 return;
             dungeon.PlayerChoseToEnter = true;
-            dungeon.RunAutomatedDungeonCrawl(line => AppendToOutput(line));
+            int totalGold = dungeon.RunAutomatedDungeonCrawl(line => AppendToOutput(line));
+            DistributeDungeonGoldToParty(totalGold);
             EndDungeonChoice();
         }
 
@@ -302,6 +311,24 @@ namespace DungeonSim
             btnEnterDungeon!.Visible = false;
             btnSkipDungeon!.Visible = false;
             btnExploreHex!.Enabled = true;
+        }
+
+        /// <summary>Distributes dungeon gold evenly among party members; remainder goes to first characters. Appends a summary line.</summary>
+        private void DistributeDungeonGoldToParty(int totalGold)
+        {
+            if (totalGold <= 0 || createdCharacters.Count == 0)
+                return;
+            int perMember = totalGold / createdCharacters.Count;
+            int remainder = totalGold % createdCharacters.Count;
+            for (int i = 0; i < createdCharacters.Count; i++)
+            {
+                int add = perMember + (i < remainder ? 1 : 0);
+                createdCharacters[i].gold += add;
+            }
+            if (remainder == 0)
+                AppendToOutput($"Gold distributed: {totalGold}g total — {perMember}g each to {createdCharacters.Count} party member(s)." + Environment.NewLine + Environment.NewLine);
+            else
+                AppendToOutput($"Gold distributed: {totalGold}g total — {perMember}g each, +1g to first {remainder} ({createdCharacters.Count} party members)." + Environment.NewLine + Environment.NewLine);
         }
 
         private void DisplayCharacterSheet(Character character)
@@ -367,6 +394,33 @@ namespace DungeonSim
             txtDetailInput.Clear();
 
             if (string.IsNullOrWhiteSpace(input)) return;
+
+            // Dungeon choice: 1 = enter, 2 = skip
+            if (hexAwaitingDungeonChoice != null)
+            {
+                if (input == "1")
+                {
+                    if (hexAwaitingDungeonChoice.ResolvedEncounter is DungeonEncounter dungeon)
+                    {
+                        dungeon.PlayerChoseToEnter = true;
+                        int totalGold = dungeon.RunAutomatedDungeonCrawl(line => AppendToOutput(line));
+                        DistributeDungeonGoldToParty(totalGold);
+                        EndDungeonChoice();
+                    }
+                    return;
+                }
+                if (input == "2")
+                {
+                    if (hexAwaitingDungeonChoice.ResolvedEncounter is DungeonEncounter dungeon)
+                        dungeon.PlayerChoseToEnter = false;
+                    AppendToOutput("Party takes a full rest. Danger roll (1d20): " + DiceSystem.Roll1d20() + Environment.NewLine + Environment.NewLine);
+                    AppendToOutput("Press Explore Hex to continue." + Environment.NewLine + Environment.NewLine);
+                    EndDungeonChoice();
+                    return;
+                }
+                AppendToOutput("Dungeon encountered. Type 1 to enter, 2 to skip." + Environment.NewLine + Environment.NewLine);
+                return;
+            }
 
             if (!int.TryParse(input, out int num) || num < 1)
             {

@@ -309,6 +309,7 @@ namespace DungeonSim
                     break;
                 case EncounterType.DungeonEntrance:
                     hex.HasDungeon = true;
+                    hex.DungeonType = "Dungeon Entrance";
                     break;
                 case EncounterType.BiomeSpecificLandmark:
                     hex.Landmark = RollBiomeSpecificLandmark(hex.Biome);
@@ -655,7 +656,15 @@ namespace DungeonSim
             log += $"Encounter: {hex.Encounter}";
             if (hex.ResolvedEncounter != null)
                 log += $" — {hex.ResolvedEncounter.GetDescription()}";
-            log += Environment.NewLine + Environment.NewLine;
+            log += Environment.NewLine;
+            if (hex.Encounter == EncounterType.DungeonEntrance)
+            {
+                log += "Dungeon Entrance discovered! ";
+                if (hex.ResolvedEncounter is DungeonEncounter dungeonEnc)
+                    log += $"Theme (d20): {dungeonEnc.ThemeRoll}, Modifier (d20): {dungeonEnc.ModifierRoll}. ";
+                log += "Type 1 to enter, 2 to skip." + Environment.NewLine;
+            }
+            log += Environment.NewLine;
             
             if (hex.Landmark != LandmarkType.None)
             {

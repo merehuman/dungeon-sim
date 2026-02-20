@@ -90,11 +90,21 @@ namespace DungeonSim
         }
 
         /// <summary>
-        /// Runs the full dungeon crawl: short rest, then room loop. Only a door-choice of EXIT or dead-end + leave (1d10 1-4) ends the crawl. At a dead end, 5-10 = backtrack through a previously unused door. Appends each line via <paramref name="appendLine"/>.
+        /// Runs the full dungeon crawl: short rest, then room loop. Only a door-choice of EXIT or dead-end + leave (1d10 1-4) ends the crawl. At a dead end, 5-10 = backtrack through a previously unused door. Appends each line via <paramref name="appendLine"/>. Returns total gold earned (caller distributes to party).
         /// </summary>
-        public void RunAutomatedDungeonCrawl(Action<string> appendLine)
+        public int RunAutomatedDungeonCrawl(Action<string> appendLine)
         {
             appendLine("Party takes a short rest, then enters the dungeon." + Environment.NewLine);
+
+            int themeRoll = ThemeRoll ?? 10;
+            int modifierRoll = ModifierRoll ?? 5;
+            var (themeName, themeEffect) = DungeonTables.GetTheme(themeRoll);
+            var (modName, modEffect) = DungeonTables.GetModifier(modifierRoll);
+            appendLine("=== DUNGEON ===" + Environment.NewLine);
+            appendLine($"Theme (d20 = {themeRoll}): {themeName}" + Environment.NewLine);
+            appendLine($"  Effect: {themeEffect}" + Environment.NewLine);
+            appendLine($"Modifier (d20 = {modifierRoll}): {modName}" + Environment.NewLine);
+            appendLine($"  Effect: {modEffect}" + Environment.NewLine);
 
             int turn = 0;
             int totalGold = 0;
@@ -104,40 +114,77 @@ namespace DungeonSim
 
             while (!exited && history.Count < MaxRoomsPerCrawl)
             {
-                int roomType = DiceSystem.Roll3d6();
-                int roomSize = DiceSystem.Roll1d12();
-                int doors = DiceSystem.Roll1d12();
-                int roomDetail = DiceSystem.Roll1d12();
+                int roomTypeRoll = DiceSystem.Roll3d6();
+                int roomSizeRoll = DiceSystem.Roll1d12();
+                int doorsRoll = DiceSystem.Roll1d12();
+                int roomDetailRoll = DiceSystem.Roll1d12();
                 turn++;
                 int roomNumber = history.Count + 1;
 
-                appendLine($"--- Room {roomNumber} (Turn {turn}) ---");
-                appendLine($"  Room Type (3d6): {roomType}, Size (d12): {roomSize}, Doors (d12): {doors}, Detail (d12): {roomDetail}");
+                var (roomTypeName, shape, origin) = DungeonTables.GetRoomType(roomTypeRoll);
+                var (sizeName, sizeEffect, maxDoors) = DungeonTables.GetRoomSize(roomSizeRoll);
+                int rawDoors = DungeonTables.GetDoorCount(doorsRoll);
+                int doors = Math.Min(rawDoors, maxDoors);
+                bool isHuge = (roomSizeRoll == 10 || roomSizeRoll == 11);
+                if (isHuge && doors >= 1) doors++;
 
-                for (int d = 0; d < doors; d++)
-                    appendLine($"  Door {d + 1} type (d20): {DiceSystem.Roll1d20()}");
-
-                int encounterRoll = DiceSystem.Roll1d20();
-                appendLine($"  Dungeon encounter (d20): {encounterRoll} — resolved.");
-                totalGold += GoldPerRoom;
-                appendLine($"  +{GoldPerRoom} gold (total this run: {totalGold})");
+                appendLine($"--- Room {roomNumber} (Turn {turn}) ---" + Environment.NewLine);
+                appendLine($"  Room Type (3d6 = {roomTypeRoll}): {roomTypeName} — {shape}, {origin}" + Environment.NewLine);
+                appendLine($"  Room Size (d12 = {roomSizeRoll}): {sizeName}. {sizeEffect}" + Environment.NewLine);
 
                 if (doors == 0)
                 {
-                    appendLine("  Dead end (no exits).");
+                    appendLine("  Exits: None (dead end)." + Environment.NewLine);
+                }
+                else
+                {
+                    appendLine($"  Exits: {doors} door(s)." + Environment.NewLine);
+                    for (int d = 0; d < doors; d++)
+                    {
+                        int doorRoll = DiceSystem.Roll1d20();
+                        var (doorName, doorEffect) = DungeonTables.GetDoorType(doorRoll);
+                        appendLine($"    Door {d + 1} (d20 = {doorRoll}): {doorName}. {doorEffect}" + Environment.NewLine);
+                    }
+                }
+
+                var (detailName, detailEffect) = DungeonTables.GetRoomDetail(roomDetailRoll);
+                appendLine($"  Room Detail (d12 = {roomDetailRoll}): {detailName}. {detailEffect}" + Environment.NewLine);
+
+                int encounterRoll = DiceSystem.Roll1d20();
+                var (encName, hasTrap, hasLoot, isThemeEncounter) = DungeonTables.GetDungeonEncounter(encounterRoll);
+                appendLine($"  Encounter (d20 = {encounterRoll}): {encName}" + Environment.NewLine);
+                if (hasTrap)
+                {
+                    int trapRoll = DiceSystem.Roll1d20();
+                    var (trapName, dc, stat, damage, effects) = DungeonTables.GetTrap(trapRoll);
+                    appendLine($"    Trap (d20 = {trapRoll}): {trapName} — DC {dc} {stat}, {damage} damage. {effects}" + Environment.NewLine);
+                }
+                if (isThemeEncounter)
+                {
+                    int themeEncRoll = DiceSystem.Roll1d6();
+                    string themeEnc = DungeonTables.GetThemeEncounter(themeRoll, themeEncRoll);
+                    appendLine($"    Theme encounter (1d6 = {themeEncRoll}): {themeEnc}" + Environment.NewLine);
+                }
+
+                totalGold += GoldPerRoom;
+                appendLine($"  +{GoldPerRoom} gold (total this run: {totalGold})" + Environment.NewLine);
+
+                if (doors == 0)
+                {
+                    appendLine("  Dead end (no exits)." + Environment.NewLine);
                     int deadEndRoll = DiceSystem.Roll1d10();
                     appendLine($"  Dead end roll (1d10): {deadEndRoll} — ");
                     if (deadEndRoll <= 4)
                     {
-                        appendLine("  Leave dungeon." + Environment.NewLine);
+                        appendLine("Leave dungeon." + Environment.NewLine + Environment.NewLine);
                         exited = true;
                         break;
                     }
-                    appendLine("  Continue exploring (use a previously unused door).");
+                    appendLine("Continue exploring (use a previously unused door)." + Environment.NewLine);
                     var withUnused = history.Where(r => r.UsedDoors.Count < r.NumDoors).ToList();
                     if (withUnused.Count == 0)
                     {
-                        appendLine("  No rooms with unused doors; party leaves." + Environment.NewLine);
+                        appendLine("  No rooms with unused doors; party leaves." + Environment.NewLine + Environment.NewLine);
                         exited = true;
                         break;
                     }
@@ -146,7 +193,7 @@ namespace DungeonSim
                     int whichUnused = RollWhichUnusedDoor(unusedIndices.Count);
                     int doorToTake = unusedIndices[whichUnused - 1];
                     roomToBacktrack.UsedDoors.Add(doorToTake);
-                    appendLine($"  Backtrack to room {roomToBacktrack.RoomNumber}, take unused door {doorToTake} (roll 1d{unusedIndices.Count} = {whichUnused})." + Environment.NewLine);
+                    appendLine($"  Backtrack to room {roomToBacktrack.RoomNumber}, take unused door {doorToTake} (roll 1d{unusedIndices.Count} = {whichUnused})." + Environment.NewLine + Environment.NewLine);
                     continue;
                 }
 
@@ -156,20 +203,20 @@ namespace DungeonSim
                 appendLine($"  Door choice (1d{sides}): ");
                 if (choice == 0)
                 {
-                    appendLine("  Exit — party leaves the dungeon." + Environment.NewLine);
+                    appendLine("Exit — party leaves the dungeon." + Environment.NewLine + Environment.NewLine);
                     exited = true;
                     break;
                 }
                 history[history.Count - 1].UsedDoors.Add(choice);
-                appendLine($"  Door {choice} — proceed to next room." + Environment.NewLine);
+                appendLine($"  Door {choice} — proceed to next room." + Environment.NewLine + Environment.NewLine);
             }
 
             if (history.Count >= MaxRoomsPerCrawl && !exited)
-                appendLine("(Max rooms reached; party leaves.)" + Environment.NewLine);
+                appendLine("(Max rooms reached; party leaves.)" + Environment.NewLine + Environment.NewLine);
 
-            appendLine("Party takes a full rest. Danger roll (1d20): " + DiceSystem.Roll1d20());
-            appendLine("");
+            appendLine("Party takes a full rest. Danger roll (1d20): " + DiceSystem.Roll1d20() + Environment.NewLine);
             appendLine("Exited dungeon. Press Explore Hex to continue." + Environment.NewLine);
+            return totalGold;
         }
 
         private sealed class RoomState

@@ -134,14 +134,10 @@ namespace DungeonSim
 
             foreach (var row in table.rows)
             {
-                if (row.ContainsKey("Roll (1d20)") || row.ContainsKey("Roll (1d12)") ||
-                    row.ContainsKey("Roll (1d4)") || row.ContainsKey("Roll (1d6)"))
+                string? rollKey = row.Keys.FirstOrDefault(k => k.StartsWith("Roll"));
+                if (rollKey != null && ParseRollRange(row[rollKey], roll))
                 {
-                    string? rollKey = row.Keys.FirstOrDefault(k => k.StartsWith("Roll"));
-                    if (rollKey != null && ParseRollRange(row[rollKey], roll))
-                    {
-                        return row;
-                    }
+                    return row;
                 }
             }
 
