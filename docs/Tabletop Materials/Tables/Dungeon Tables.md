@@ -54,6 +54,41 @@ _Note: In addition to all of the effects listed, you roll on the corresponding e
 | 4-8 | 1 |
 | 9-11 | 2 |
 | 12 | 3 |
+#### **Dungeon Door Choice (which door to go through, or exit):**
+
+When the party is in a room with one or more exits, roll on the table that matches the number of exits. The result is either **Exit** (leave the dungeon) or **Door A**, **Door B**, etc. (go through that door into a new room). Only a roll of **Exit** ends the dungeon crawl from this step.
+
+| **Number of Exits** | **Roll** | **Result** |
+| ---- | ---- | ---- |
+| 1 | 1d4 | 1 = Exit, 2–4 = Door A |
+| 2 | 1d6 | 1 = Exit, 2–3 = Door A, 4–5 = Door B, 6 = Door B |
+| 3 | 1d8 | 1 = Exit, 2–3 = Door A, 4–5 = Door B, 6–7 = Door C, 8 = Door C |
+| 4 | 1d6 | 1 = Exit, 2 = Door A, 3 = Door B, 4 = Door C, 5 = Door D, 6 = Door D |
+| 5+ | 1d(N+1) | 1 = Exit, 2 = Door 1, 3 = Door 2, … , N+1 = Door N |
+
+*For 5 or more exits, use a die with N+1 sides (e.g. 1d6 for 5 exits, 1d12 for 11 exits); 1 = Exit, each other face = one door.*
+
+#### **Backtrack — which unused door (when continuing from a dead end):**
+
+When the party is at a dead end and rolls 5–10 on the Dead End table (continue exploring), use this to choose which previously unused door to go through. Roll 1dK where K = number of available (unused) doors in the room you are backtracking to; each result corresponds to one of those doors.
+
+| **Available unused doors (K)** | **Roll** | **Result** |
+| ---- | ---- | ---- |
+| 1 | — | That door |
+| 2 | 1d2 | 1 = first unused, 2 = second unused |
+| 3 | 1d3 | 1 = first, 2 = second, 3 = third |
+| 4 | 1d4 | 1–4 = first, second, third, fourth |
+| 5+ | 1dK | 1 = first, 2 = second, … , K = K-th |
+
+#### **Dead End (no exits):**
+
+When the party reaches a room with no exits, do **not** leave immediately. Roll 1d10:
+
+| **Roll (1d10)** | **Result** |
+| ---- | ---- |
+| 1–4 | Leave the dungeon (full rest, danger roll, then hexcrawling). |
+| 5–10 | Continue exploring: choose one of the doors the party has not yet used in a previously visited room. Roll on **Backtrack — which unused door** for that room’s available doors, then proceed through that door into a new room (roll new room as usual). |
+
 #### **Exit Types:**
 | **Roll (1d20)** | **Type of Door** |
 | ---- | ---- |

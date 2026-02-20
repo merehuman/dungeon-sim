@@ -32,6 +32,11 @@ namespace DungeonSim
             
             // Generate specific content based on encounter
             GenerateEncounterContent(hex);
+
+            // Create resolved encounter instance for integration with encounter/dungeon system
+            hex.ResolvedEncounter = Encounter.CreateFromHex(hex);
+            if (hex.ResolvedEncounter is DungeonEncounter dungeonEncounter)
+                dungeonEncounter.RollThemeAndModifier();
             
             return hex;
         }
@@ -304,7 +309,6 @@ namespace DungeonSim
                     break;
                 case EncounterType.DungeonEntrance:
                     hex.HasDungeon = true;
-                    hex.DungeonType = DetermineDungeonType(hex.Biome);
                     break;
                 case EncounterType.BiomeSpecificLandmark:
                     hex.Landmark = RollBiomeSpecificLandmark(hex.Biome);
@@ -648,7 +652,10 @@ namespace DungeonSim
             log += $"Biome: {hex.Biome}{Environment.NewLine}";
             log += $"Modifier: {hex.Modifier}{Environment.NewLine}";
             log += $"Weather: {hex.Weather}{Environment.NewLine}";
-            log += $"Encounter: {hex.Encounter}{Environment.NewLine}{Environment.NewLine}";
+            log += $"Encounter: {hex.Encounter}";
+            if (hex.ResolvedEncounter != null)
+                log += $" — {hex.ResolvedEncounter.GetDescription()}";
+            log += Environment.NewLine + Environment.NewLine;
             
             if (hex.Landmark != LandmarkType.None)
             {

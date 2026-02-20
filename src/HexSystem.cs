@@ -205,6 +205,8 @@ namespace DungeonSim
         public bool IsCapital { get; set; }
         public bool HasDungeon { get; set; }
         public string DungeonType { get; set; } = "";
+        /// <summary>Resolved encounter instance (e.g. DungeonEncounter) when this hex's encounter is rolled. Used for integration with the encounter/dungeon system.</summary>
+        public Encounter? ResolvedEncounter { get; set; }
         public List<string> DiscoveredLandmarks { get; set; } = new List<string>();
         public List<string> Notes { get; set; } = new List<string>();
 

@@ -44,6 +44,7 @@ namespace DungeonSim
         private HexMap? hexMap;
         private DetailListMode detailListMode = DetailListMode.None;
         private List<Hex>? detailHexList;
+        private Hex? hexAwaitingDungeonChoice;
         private SplitContainer? mainSplit;
         private SplitContainer? rightSplit;
         private Panel? panelLeft;
@@ -260,11 +261,47 @@ namespace DungeonSim
                 AppendToOutput("Hex exploration complete! Map updated in the right panel." + Environment.NewLine);
                 AppendToOutput($"Enter a number (1–{detailHexList.Count}) below to view that hex's full details." + Environment.NewLine + Environment.NewLine);
                 hexGridPanel?.Invalidate();
+
+                if (newHex.ResolvedEncounter is DungeonEncounter dungeonEncounter)
+                {
+                    hexAwaitingDungeonChoice = newHex;
+                    dungeonEncounter.PlayerChoseToEnter = null;
+                    AppendToOutput("Enter dungeon or skip? Use [Enter Dungeon] or [Skip Dungeon]." + Environment.NewLine + Environment.NewLine);
+                    btnExploreHex!.Enabled = false;
+                    btnEnterDungeon!.Visible = true;
+                    btnSkipDungeon!.Visible = true;
+                }
             }
             catch (Exception ex)
             {
                 AppendToOutput($"Error exploring hex: {ex.Message}" + Environment.NewLine + Environment.NewLine);
             }
+        }
+
+        private void btnEnterDungeon_Click(object? sender, EventArgs e)
+        {
+            if (hexAwaitingDungeonChoice?.ResolvedEncounter is not DungeonEncounter dungeon)
+                return;
+            dungeon.PlayerChoseToEnter = true;
+            dungeon.RunAutomatedDungeonCrawl(line => AppendToOutput(line));
+            EndDungeonChoice();
+        }
+
+        private void btnSkipDungeon_Click(object? sender, EventArgs e)
+        {
+            if (hexAwaitingDungeonChoice?.ResolvedEncounter is DungeonEncounter dungeon)
+                dungeon.PlayerChoseToEnter = false;
+            AppendToOutput("Party takes a full rest. Danger roll (1d20): " + DiceSystem.Roll1d20() + Environment.NewLine + Environment.NewLine);
+            AppendToOutput("Press Explore Hex to continue." + Environment.NewLine + Environment.NewLine);
+            EndDungeonChoice();
+        }
+
+        private void EndDungeonChoice()
+        {
+            hexAwaitingDungeonChoice = null;
+            btnEnterDungeon!.Visible = false;
+            btnSkipDungeon!.Visible = false;
+            btnExploreHex!.Enabled = true;
         }
 
         private void DisplayCharacterSheet(Character character)
@@ -372,6 +409,8 @@ namespace DungeonSim
             this.btnClearOutput = new System.Windows.Forms.Button();
             this.btnExploreHex = new System.Windows.Forms.Button();
             this.btnShowExploredHexes = new System.Windows.Forms.Button();
+            this.btnEnterDungeon = new System.Windows.Forms.Button();
+            this.btnSkipDungeon = new System.Windows.Forms.Button();
 
             this.mainSplit = new SplitContainer();
             this.mainSplit.Dock = DockStyle.Fill;
@@ -419,6 +458,10 @@ namespace DungeonSim
             AddMenuButton(btnCreateCharacter, "Create Character", btnCreateCharacter_Click, leftFlowTop);
             AddMenuButton(btnShowCharacterSheet, "Show Party", btnShowCharacterSheet_Click, leftFlowTop);
             AddMenuButton(btnExploreHex, "Explore Hex", btnExploreHex_Click, leftFlowTop);
+            AddMenuButton(btnEnterDungeon, "Enter Dungeon", btnEnterDungeon_Click, leftFlowTop);
+            AddMenuButton(btnSkipDungeon, "Skip Dungeon", btnSkipDungeon_Click, leftFlowTop);
+            btnEnterDungeon.Visible = false;
+            btnSkipDungeon.Visible = false;
             AddMenuButton(btnShowExploredHexes, "Show Explored Hexes", btnShowExploredHexes_Click, leftFlowTop);
             AddMenuButton(btnShowCreationLog, "Show Creation Log", btnShowCreationLog_Click, leftFlowBottom);
             AddMenuButton(btnClearOutput, "Clear Output", btnClearOutput_Click, leftFlowBottom);
@@ -512,5 +555,7 @@ namespace DungeonSim
         private System.Windows.Forms.Button? btnClearOutput;
         private System.Windows.Forms.Button? btnExploreHex;
         private System.Windows.Forms.Button? btnShowExploredHexes;
+        private System.Windows.Forms.Button? btnEnterDungeon;
+        private System.Windows.Forms.Button? btnSkipDungeon;
     }
 }
